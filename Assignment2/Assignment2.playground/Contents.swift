@@ -125,8 +125,8 @@ enum CellState {
 // A struct representing a Cell in Conway's Game of Life
 struct Cell {
     // ** Your Problem 3 code goes here! replace the following two lines **
-    var position: Position = (0, 0)
-    var state: CellState = CellState.empty
+    var position = (0, 0)
+    var state = CellState.empty
 }
 /*:
  ## Problem 4:
@@ -323,7 +323,7 @@ extension Grid {
  */
 // ** Your Problem 11.3 answer goes here **
 /*
-    Known types are used here, as opposed to map2 which is generic and could function for any passed in type (reduce2 is exclusive to "Int"s).
+    Known types are used here, as opposed to map2 which is generic and could function for any passed in type (reduce2 is exclusive to "Int"s that represent grid positions).
  */
 
 // A function which is useful for counting things in an array of arrays of things
@@ -445,14 +445,14 @@ extension Grid {
  */
 // Problem 15.2 answer goes here
 /*
-    Cell?
+    Cell? (also: Optional<Cell>)
  */
 /*:
  3. why those two types are different?
  */
 // Problem 15.3 comment goes here
 /*
-    Optional vs not, where "Cell" is a definite object, while "Cell?" is an enum with case nil, and a case where the value is of type "Cell".
+    Optional vs not, where "Cell" is a definite object, while "Cell?" is an enum with case .None with nothing attached, and a .Some case where there's an attached value of type "Cell".
  */
 /*:
  4. under what circumstances will the `else` clause will be executed?
