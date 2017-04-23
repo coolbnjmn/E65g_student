@@ -117,12 +117,18 @@ class GridView: UIView {
     
     func process(touches: Set<UITouch>) -> Position? {
         guard let firstTouch = touches.first, touches.count == 1 else { return nil }
+
+        let touchY = firstTouch.location(in: self.superview).y
+        let touchX = firstTouch.location(in: self.superview).x
+        guard touchX > frame.origin.x && touchX < (frame.origin.x + frame.size.width) else { return nil }
+        guard touchY > frame.origin.y && touchY < (frame.origin.y + frame.size.height) else { return nil }
+
         let pos = convert(touch: firstTouch)
         guard lastTouchedPosition?.row != pos.row
             || lastTouchedPosition?.col != pos.col
             else { return pos }
         
-        grid[(pos.row,pos.col)] = grid[(pos.row,pos.col)].toggle()
+        grid[(pos.row,pos.col)] = CellState.toggle(grid[(pos.row,pos.col)])
         setNeedsDisplay()
         return pos
     }

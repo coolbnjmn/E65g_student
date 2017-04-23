@@ -24,8 +24,8 @@ public enum CellState: String {
         return [.alive, .born, .died, .empty]
     }
     
-    public func toggle() -> CellState {
-        switch self {
+    static public func toggle(_ state: CellState) -> CellState {
+        switch state {
         case .died, .empty:
             return .alive
         case .alive, .born:
