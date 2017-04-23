@@ -38,3 +38,47 @@ extension String {
         )
     }
 }
+
+extension UIView {
+    func shakeAndWiggle() {
+        UIView.animateKeyframes(withDuration: 0.4, delay: 0, options: .calculationModeCubic, animations: {
+            UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 10, animations: {
+                self.center = CGPoint(x: self.center.x-10, y: self.center.y)
+            })
+            UIView.addKeyframe(withRelativeStartTime: 0.1, relativeDuration: 20, animations: {
+                self.center = CGPoint(x: self.center.x+20, y: self.center.y)
+            })
+            UIView.addKeyframe(withRelativeStartTime: 0.3, relativeDuration: 10, animations: {
+                self.center = CGPoint(x: self.center.x-10, y: self.center.y)
+            })
+            UIView.addKeyframe(withRelativeStartTime: 0.4, relativeDuration: 10, animations: {
+                self.center = CGPoint(x: self.center.x-10, y: self.center.y)
+            })
+            UIView.addKeyframe(withRelativeStartTime: 0.5, relativeDuration: 20, animations: {
+                self.center = CGPoint(x: self.center.x+20, y: self.center.y)
+            })
+            UIView.addKeyframe(withRelativeStartTime: 0.7, relativeDuration: 10, animations: {
+                self.center = CGPoint(x: self.center.x-10, y: self.center.y)
+            })
+            UIView.addKeyframe(withRelativeStartTime: 0.8, relativeDuration: 10, animations: {
+                self.center = CGPoint(x: self.center.x-10, y: self.center.y)
+            })
+            UIView.addKeyframe(withRelativeStartTime: 0.9, relativeDuration: 10, animations: {
+                self.center = CGPoint(x: self.center.x+10, y: self.center.y)
+            })
+            UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 25, animations: {
+                self.alpha = 0
+            })
+            UIView.addKeyframe(withRelativeStartTime: 0.25, relativeDuration: 25, animations: {
+                self.alpha = 1
+            })
+            UIView.addKeyframe(withRelativeStartTime: 0.50, relativeDuration: 25, animations: {
+                self.alpha = 0
+            })
+            UIView.addKeyframe(withRelativeStartTime: 0.75, relativeDuration: 25, animations: {
+                self.alpha = 1
+            })
+        }, completion: nil)
+        UIView.commitAnimations()
+    }
+}

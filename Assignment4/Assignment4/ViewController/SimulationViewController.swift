@@ -11,26 +11,32 @@ import UIKit
 class SimulationViewController: UIViewController {
     static let storyboardID: String = "SimulationViewController"
 
+    @IBOutlet weak var gridView: GridView!
+    @IBOutlet weak var stepButton: UIButton!
+
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        StandardEngine.engine.delegate = self
+        engineDidUpdate(withGrid: gridView.grid)
+        gridView.delegate = self
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    @IBAction func stepButtonPressed(_ sender: Any) {
+        gridView.grid = StandardEngine.engine.step()
+        engineDidUpdate(withGrid: gridView.grid)
     }
-    */
+}
 
+extension SimulationViewController: GridViewDelegate {
+    func cellStatesChanged() {
+        engineDidUpdate(withGrid: gridView.grid)
+    }
+}
+extension SimulationViewController: EngineDelegate {
+    func engineDidUpdate(withGrid gridFromEngine: GridProtocol) {
+        gridView.grid = gridFromEngine
+        let grid: Any? = gridView.grid
+        let gridNotification: NSNotification.Name = NSNotification.Name(rawValue: Constants.Strings.gridChangeNotification)
+        NotificationCenter.default.post(name: gridNotification, object: grid)
+    }
 }

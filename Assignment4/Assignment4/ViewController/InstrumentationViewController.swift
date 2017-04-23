@@ -38,11 +38,22 @@ class InstrumentationViewController: UIViewController {
         refreshRateKeyImageView.image = #imageLiteral(resourceName: "keyIcon").withRenderingMode(.alwaysTemplate)
         refreshRateKeyImageView.tintColor = Constants.Colors.appRedColor
         refreshRateTextField.text = "\(refreshRateSlider.value)"
+        
+        rowTextField.text = "\(rowStepper.value)"
+        colTextField.text = "\(colStepper.value)"
     }
 
     // MARK :- IBActions
 
     @IBAction func rowTextFieldChanged(_ sender: Any) {
+        let newValue = ((Double(rowTextField.text ?? "") ?? rowStepper.value)*100).rounded()/100
+        
+        guard newValue <= 1000 && newValue >= 2 else {
+            rowTextField.shakeAndWiggle()
+            rowTextField.becomeFirstResponder()
+            return
+        }
+        
         rowStepper.value = Double(rowTextField.text ?? "") ?? rowStepper.value
     }
     
@@ -51,6 +62,14 @@ class InstrumentationViewController: UIViewController {
     }
 
     @IBAction func colTextFieldChanged(_ sender: Any) {
+        let newValue = ((Double(colTextField.text ?? "") ?? colStepper.value)*100).rounded()/100
+        
+        guard newValue <= 1000 && newValue >= 2 else {
+            colTextField.shakeAndWiggle()
+            colTextField.becomeFirstResponder()
+            return
+        }
+
         colStepper.value = Double(colTextField.text ?? "") ?? colStepper.value
     }
     
@@ -59,11 +78,18 @@ class InstrumentationViewController: UIViewController {
     }
     
     @IBAction func refreshRateTextFieldChanged(_ sender: Any) {
-        refreshRateSlider.value = Float(refreshRateTextField.text ?? "") ?? refreshRateSlider.value
+        let newValue = ((Float(refreshRateTextField.text ?? "") ?? refreshRateSlider.value)*100).rounded()/100
+        
+        guard newValue <= 10 && newValue >= 0.1 else {
+            refreshRateTextField.shakeAndWiggle()
+            refreshRateTextField.becomeFirstResponder()
+            return
+        }
+        refreshRateSlider.value = newValue
     }
 
     @IBAction func refreshRateSliderSlid(_ sender: Any) {
-        refreshRateTextField.text = "\(refreshRateSlider.value)"
+        refreshRateTextField.text = "\((refreshRateSlider.value*100).rounded()/100)"
     }
     
     @IBAction func timedRefreshSwitchSwitched(_ sender: Any) {

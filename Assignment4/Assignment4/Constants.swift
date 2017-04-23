@@ -10,6 +10,10 @@ import UIKit
 
 public struct Constants {
 
+    public struct Strings {
+        static let gridChangeNotification: String = "Grid Changed Notification"
+    }
+    
     public struct Defaults {
         static let defaultColCount: Int = 10
         static let defaultRowCount: Int = 10

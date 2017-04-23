@@ -12,6 +12,10 @@
 		B2D70D111EAC88A700BFD750 /* StatisticsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2D70D101EAC88A700BFD750 /* StatisticsViewController.swift */; };
 		B2D70D131EACC0C200BFD750 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2D70D121EACC0C200BFD750 /* Constants.swift */; };
 		B2D70D151EACC16F00BFD750 /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2D70D141EACC16F00BFD750 /* Helpers.swift */; };
+		B2D70D171EACEC0600BFD750 /* EngineDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2D70D161EACEC0600BFD750 /* EngineDelegate.swift */; };
+		B2D70D191EACEF3700BFD750 /* EngineProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2D70D181EACEF3700BFD750 /* EngineProtocol.swift */; };
+		B2D70D1B1EACEF5700BFD750 /* StandardEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2D70D1A1EACEF5700BFD750 /* StandardEngine.swift */; };
+		B2D70D1D1EACF36400BFD750 /* GridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2D70D1C1EACF36400BFD750 /* GridView.swift */; };
 		FB475A381E8828EF00D2EAD3 /* Grid.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB475A371E8828EF00D2EAD3 /* Grid.swift */; };
 		FBAD2E071E2BE38C008207C0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBAD2E061E2BE38C008207C0 /* AppDelegate.swift */; };
 		FBAD2E0E1E2BE38C008207C0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FBAD2E0C1E2BE38C008207C0 /* Main.storyboard */; };
@@ -25,6 +29,10 @@
 		B2D70D101EAC88A700BFD750 /* StatisticsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StatisticsViewController.swift; path = ViewController/StatisticsViewController.swift; sourceTree = "<group>"; };
 		B2D70D121EACC0C200BFD750 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		B2D70D141EACC16F00BFD750 /* Helpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
+		B2D70D161EACEC0600BFD750 /* EngineDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EngineDelegate.swift; sourceTree = "<group>"; };
+		B2D70D181EACEF3700BFD750 /* EngineProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EngineProtocol.swift; sourceTree = "<group>"; };
+		B2D70D1A1EACEF5700BFD750 /* StandardEngine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StandardEngine.swift; sourceTree = "<group>"; };
+		B2D70D1C1EACF36400BFD750 /* GridView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GridView.swift; sourceTree = "<group>"; };
 		FB475A371E8828EF00D2EAD3 /* Grid.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Grid.swift; sourceTree = "<group>"; };
 		FBAD2E031E2BE38C008207C0 /* Assignment4.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Assignment4.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FBAD2E061E2BE38C008207C0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -76,6 +84,10 @@
 			children = (
 				B2D70D0B1EAC886300BFD750 /* View Controllers */,
 				FB475A371E8828EF00D2EAD3 /* Grid.swift */,
+				B2D70D161EACEC0600BFD750 /* EngineDelegate.swift */,
+				B2D70D181EACEF3700BFD750 /* EngineProtocol.swift */,
+				B2D70D1C1EACF36400BFD750 /* GridView.swift */,
+				B2D70D1A1EACEF5700BFD750 /* StandardEngine.swift */,
 				FBAD2E061E2BE38C008207C0 /* AppDelegate.swift */,
 				B2D70D121EACC0C200BFD750 /* Constants.swift */,
 				B2D70D141EACC16F00BFD750 /* Helpers.swift */,
@@ -159,13 +171,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B2D70D171EACEC0600BFD750 /* EngineDelegate.swift in Sources */,
 				B2D70D0D1EAC888B00BFD750 /* InstrumentationViewController.swift in Sources */,
 				B2D70D151EACC16F00BFD750 /* Helpers.swift in Sources */,
+				B2D70D1D1EACF36400BFD750 /* GridView.swift in Sources */,
 				B2D70D111EAC88A700BFD750 /* StatisticsViewController.swift in Sources */,
+				B2D70D1B1EACEF5700BFD750 /* StandardEngine.swift in Sources */,
 				B2D70D0F1EAC889C00BFD750 /* SimulationViewController.swift in Sources */,
 				FBAD2E071E2BE38C008207C0 /* AppDelegate.swift in Sources */,
 				FB475A381E8828EF00D2EAD3 /* Grid.swift in Sources */,
 				B2D70D131EACC0C200BFD750 /* Constants.swift in Sources */,
+				B2D70D191EACEF3700BFD750 /* EngineProtocol.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

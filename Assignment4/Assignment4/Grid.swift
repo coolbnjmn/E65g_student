@@ -6,13 +6,30 @@ public typealias GridSize = (rows: Int, cols: Int)
 
 fileprivate func norm(_ val: Int, to size: Int) -> Int { return ((val % size) + size) % size }
 
-public enum CellState {
+public enum CellState: String {
     case alive, empty, born, died
     
     public var isAlive: Bool {
         switch self {
         case .alive, .born: return true
         default: return false
+        }
+    }
+    
+    public func description() -> String {
+        return self.rawValue
+    }
+    
+    public func allValues() -> [CellState] {
+        return [.alive, .born, .died, .empty]
+    }
+    
+    public func toggle() -> CellState {
+        switch self {
+        case .died, .empty:
+            return .alive
+        case .alive, .born:
+            return .empty
         }
     }
 }
