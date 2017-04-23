@@ -10,6 +10,8 @@
 		B2D70D0D1EAC888B00BFD750 /* InstrumentationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2D70D0C1EAC888B00BFD750 /* InstrumentationViewController.swift */; };
 		B2D70D0F1EAC889C00BFD750 /* SimulationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2D70D0E1EAC889C00BFD750 /* SimulationViewController.swift */; };
 		B2D70D111EAC88A700BFD750 /* StatisticsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2D70D101EAC88A700BFD750 /* StatisticsViewController.swift */; };
+		B2D70D131EACC0C200BFD750 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2D70D121EACC0C200BFD750 /* Constants.swift */; };
+		B2D70D151EACC16F00BFD750 /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2D70D141EACC16F00BFD750 /* Helpers.swift */; };
 		FB475A381E8828EF00D2EAD3 /* Grid.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB475A371E8828EF00D2EAD3 /* Grid.swift */; };
 		FBAD2E071E2BE38C008207C0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBAD2E061E2BE38C008207C0 /* AppDelegate.swift */; };
 		FBAD2E0E1E2BE38C008207C0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FBAD2E0C1E2BE38C008207C0 /* Main.storyboard */; };
@@ -21,6 +23,8 @@
 		B2D70D0C1EAC888B00BFD750 /* InstrumentationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = InstrumentationViewController.swift; path = ViewController/InstrumentationViewController.swift; sourceTree = "<group>"; };
 		B2D70D0E1EAC889C00BFD750 /* SimulationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SimulationViewController.swift; path = ViewController/SimulationViewController.swift; sourceTree = "<group>"; };
 		B2D70D101EAC88A700BFD750 /* StatisticsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StatisticsViewController.swift; path = ViewController/StatisticsViewController.swift; sourceTree = "<group>"; };
+		B2D70D121EACC0C200BFD750 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		B2D70D141EACC16F00BFD750 /* Helpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
 		FB475A371E8828EF00D2EAD3 /* Grid.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Grid.swift; sourceTree = "<group>"; };
 		FBAD2E031E2BE38C008207C0 /* Assignment4.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Assignment4.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FBAD2E061E2BE38C008207C0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -73,6 +77,8 @@
 				B2D70D0B1EAC886300BFD750 /* View Controllers */,
 				FB475A371E8828EF00D2EAD3 /* Grid.swift */,
 				FBAD2E061E2BE38C008207C0 /* AppDelegate.swift */,
+				B2D70D121EACC0C200BFD750 /* Constants.swift */,
+				B2D70D141EACC16F00BFD750 /* Helpers.swift */,
 				FBAD2E0C1E2BE38C008207C0 /* Main.storyboard */,
 				FBAD2E0F1E2BE38C008207C0 /* Assets.xcassets */,
 				FBAD2E111E2BE38C008207C0 /* LaunchScreen.storyboard */,
@@ -154,10 +160,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				B2D70D0D1EAC888B00BFD750 /* InstrumentationViewController.swift in Sources */,
+				B2D70D151EACC16F00BFD750 /* Helpers.swift in Sources */,
 				B2D70D111EAC88A700BFD750 /* StatisticsViewController.swift in Sources */,
 				B2D70D0F1EAC889C00BFD750 /* SimulationViewController.swift in Sources */,
 				FBAD2E071E2BE38C008207C0 /* AppDelegate.swift in Sources */,
 				FB475A381E8828EF00D2EAD3 /* Grid.swift in Sources */,
+				B2D70D131EACC0C200BFD750 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
