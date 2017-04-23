@@ -28,7 +28,7 @@
             </objects>
             <point key="canvasLocation" x="0.0" y="0.0"/>
         </scene>
-        <!--Item-->
+        <!--Simulation-->
         <scene sceneID="ACf-hl-igs">
             <objects>
                 <viewController id="A0Y-bq-k4t" sceneMemberID="viewController">
@@ -41,13 +41,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="o4D-8Z-WrQ"/>
+                    <tabBarItem key="tabBarItem" title="Simulation" image="simulationTabIcon" selectedImage="simulationTabIcon" id="o4D-8Z-WrQ"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Dq9-ze-TYL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="868" y="0.0"/>
         </scene>
-        <!--Item-->
+        <!--Statistics-->
         <scene sceneID="xOA-ua-kOt">
             <objects>
                 <viewController id="5dR-Uc-gf4" sceneMemberID="viewController">
@@ -60,13 +60,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="m1I-eD-FbX"/>
+                    <tabBarItem key="tabBarItem" title="Statistics" image="statisticsTabIcon" selectedImage="statisticsTabIcon" id="m1I-eD-FbX"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="B5h-F9-DFe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1604" y="417"/>
         </scene>
-        <!--Item-->
+        <!--Instrumentation-->
         <scene sceneID="puT-XK-h8Z">
             <objects>
                 <viewController id="Z82-TF-lRc" sceneMemberID="viewController">
@@ -79,11 +79,16 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="eNX-Py-uOS"/>
+                    <tabBarItem key="tabBarItem" title="Instrumentation" image="instrumentationTabIcon" selectedImage="instrumentationTabIcon" id="eNX-Py-uOS"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="f2A-Zx-igO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1604" y="-367"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="instrumentationTabIcon" width="30" height="30"/>
+        <image name="simulationTabIcon" width="30" height="30"/>
+        <image name="statisticsTabIcon" width="30" height="30"/>
+    </resources>
 </document>
