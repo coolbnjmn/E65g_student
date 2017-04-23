@@ -42,6 +42,15 @@ class InstrumentationViewController: UIViewController {
         rowTextField.text = "\(rowStepper.value)"
         colTextField.text = "\(colStepper.value)"
     }
+    
+    func updateGridSize() {
+        StandardEngine.engine.rows = Int(rowStepper.value)
+        StandardEngine.engine.cols = Int(colStepper.value)
+        StandardEngine.engine.grid = nil
+        StandardEngine.engine.actualGrid = nil
+        let newGrid = StandardEngine.engine.grid // load lazy var
+        StandardEngine.engine.delegate?.engineDidUpdate(withGrid: newGrid)
+    }
 
     // MARK :- IBActions
 
@@ -57,12 +66,14 @@ class InstrumentationViewController: UIViewController {
         rowStepper.value = Double(Int(Double(rowTextField.text ?? "") ?? rowStepper.value))
         colStepper.value = rowStepper.value
         colTextField.text = rowTextField.text
+        updateGridSize()
     }
     
     @IBAction func rowStepperPressed(_ sender: Any) {
         rowTextField.text = "\(rowStepper.value)"
         colStepper.value = rowStepper.value
         colTextField.text = rowTextField.text
+        updateGridSize()
     }
 
     @IBAction func colTextFieldChanged(_ sender: Any) {
@@ -77,12 +88,14 @@ class InstrumentationViewController: UIViewController {
         colStepper.value = Double(Int(Double(colTextField.text ?? "") ?? colStepper.value))
         rowStepper.value = colStepper.value
         rowTextField.text = colTextField.text
+        updateGridSize()
     }
     
     @IBAction func colStepperPressed(_ sender: Any) {
         colTextField.text = "\(colStepper.value)"
         rowStepper.value = colStepper.value
         rowTextField.text = colTextField.text
+        updateGridSize()
     }
     
     @IBAction func refreshRateTextFieldChanged(_ sender: Any) {

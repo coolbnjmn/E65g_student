@@ -11,7 +11,6 @@ protocol GridViewDelegate {
     func cellStatesChanged()
 }
 
-@IBDesignable
 class GridView: UIView {
     var delegate: GridViewDelegate?
     

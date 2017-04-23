@@ -14,8 +14,8 @@ class SimulationViewController: UIViewController {
     @IBOutlet weak var gridView: GridView!
     @IBOutlet weak var stepButton: UIButton!
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         gridView.delegate = self
         StandardEngine.engine.delegate = self
         updateEngineAndDisplay()
