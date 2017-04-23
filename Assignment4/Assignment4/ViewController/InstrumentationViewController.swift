@@ -46,7 +46,7 @@ class InstrumentationViewController: UIViewController {
     // MARK :- IBActions
 
     @IBAction func rowTextFieldChanged(_ sender: Any) {
-        let newValue = ((Double(rowTextField.text ?? "") ?? rowStepper.value)*100).rounded()/100
+        let newValue = Double(Int(((Double(rowTextField.text ?? "") ?? rowStepper.value)*100).rounded()/100))
         
         guard newValue <= 1000 && newValue >= 2 else {
             rowTextField.shakeAndWiggle()
@@ -54,15 +54,19 @@ class InstrumentationViewController: UIViewController {
             return
         }
         
-        rowStepper.value = Double(rowTextField.text ?? "") ?? rowStepper.value
+        rowStepper.value = Double(Int(Double(rowTextField.text ?? "") ?? rowStepper.value))
+        colStepper.value = rowStepper.value
+        colTextField.text = rowTextField.text
     }
     
     @IBAction func rowStepperPressed(_ sender: Any) {
         rowTextField.text = "\(rowStepper.value)"
+        colStepper.value = rowStepper.value
+        colTextField.text = rowTextField.text
     }
 
     @IBAction func colTextFieldChanged(_ sender: Any) {
-        let newValue = ((Double(colTextField.text ?? "") ?? colStepper.value)*100).rounded()/100
+        let newValue = Double(Int(((Double(colTextField.text ?? "") ?? colStepper.value)*100).rounded()/100))
         
         guard newValue <= 1000 && newValue >= 2 else {
             colTextField.shakeAndWiggle()
@@ -70,11 +74,15 @@ class InstrumentationViewController: UIViewController {
             return
         }
 
-        colStepper.value = Double(colTextField.text ?? "") ?? colStepper.value
+        colStepper.value = Double(Int(Double(colTextField.text ?? "") ?? colStepper.value))
+        rowStepper.value = colStepper.value
+        rowTextField.text = colTextField.text
     }
     
     @IBAction func colStepperPressed(_ sender: Any) {
         colTextField.text = "\(colStepper.value)"
+        rowStepper.value = colStepper.value
+        rowTextField.text = colTextField.text
     }
     
     @IBAction func refreshRateTextFieldChanged(_ sender: Any) {

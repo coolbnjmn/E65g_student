@@ -21,8 +21,23 @@ class StandardEngine: EngineProtocol {
         }
     }()
     
-    var refreshRate: Double = 0
-    var refreshTimer: Timer
+    var refreshRate: Double = 0 {
+        didSet {
+            if refreshRate > 0.0 {
+                refreshTimer = Timer.scheduledTimer(
+                    withTimeInterval: refreshRate,
+                    repeats: true
+                ) { (t: Timer) in
+                    _ = self.step()
+                }
+            }
+            else {
+                refreshTimer?.invalidate()
+                refreshTimer = nil
+            }
+        }
+    }
+    var refreshTimer: Timer?
     var rows: Int = 10
     var cols: Int = 10
     
@@ -33,7 +48,7 @@ class StandardEngine: EngineProtocol {
         cols = 10
         refreshTimer = Timer()
     }
-    
+
     func step() -> GridProtocol {
         grid = grid.next()
         delegate?.engineDidUpdate(withGrid: grid)

@@ -12,7 +12,7 @@ protocol EngineProtocol {
     var delegate: EngineDelegate? { get set }
     var grid: GridProtocol { get set }
     var refreshRate: Double { get set }
-    var refreshTimer: Timer { get set }
+    var refreshTimer: Timer? { get set }
     var rows: Int { get set }
     var cols: Int { get set }
     
