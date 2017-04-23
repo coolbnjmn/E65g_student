@@ -11,26 +11,53 @@ import UIKit
 class StatisticsViewController: UIViewController {
     static let storyboardID: String = "StatisticsViewController"
 
+    @IBOutlet weak var aliveLabel: UILabel!
+    @IBOutlet weak var aliveCountLabel: UILabel!
+
+    @IBOutlet weak var deadLabel: UILabel!
+    @IBOutlet weak var deadCountLabel: UILabel!
+
+    @IBOutlet weak var bornLabel: UILabel!
+    @IBOutlet weak var bornCountLabel: UILabel!
+    
+    @IBOutlet weak var emptyCountLabel: UILabel!
+    @IBOutlet weak var emptyLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(StatisticsViewController.engineDidUpdate(_:)), name: NSNotification.Name(rawValue: Constants.Strings.gridChangeNotification), object: nil)
+        
+        aliveLabel.text = "# Cells that are alive:"
+        deadLabel.text = "# Cells that just died:"
+        bornLabel.text = "# Cells that were just born:"
+        emptyLabel.text = "# Cells that are dead:"
+        
+        guard let grid: Grid = StandardEngine.engine.grid as? Grid else {
+            return
+        }
+        
+        let gridIterator = grid.makeIterator()
+        aliveCountLabel.text = "\(gridIterator.alive.count)"
+        deadCountLabel.text = "\(gridIterator.died.count)"
+        bornCountLabel.text = "\(gridIterator.born.count)"
+        emptyCountLabel.text = "\(gridIterator.empty.count)"
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    deinit {
+        NotificationCenter.default.removeObserver(self)
     }
-    */
 
+    func engineDidUpdate(_ notification: Notification) {
+        guard let grid = notification.userInfo?["grid"] as? Grid else {
+            return
+        }
+        
+        let gridIterator = grid.makeIterator()
+        aliveCountLabel.text = "\(gridIterator.alive.count)"
+        deadCountLabel.text = "\(gridIterator.died.count)"
+        bornCountLabel.text = "\(gridIterator.born.count)"
+        emptyCountLabel.text = "\(gridIterator.empty.count)"
+        view.setNeedsDisplay()
+    }
 }

@@ -17,6 +17,7 @@ class SimulationViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         gridView.delegate = self
+        StandardEngine.engine.delegate = self
         updateEngineAndDisplay()
     }
     
@@ -41,8 +42,7 @@ extension SimulationViewController: GridViewDelegate {
 extension SimulationViewController: EngineDelegate {
     func engineDidUpdate(withGrid gridFromEngine: GridProtocol) {
         gridView.grid = gridFromEngine
-        let grid: Any? = gridView.grid
         let gridNotification: NSNotification.Name = NSNotification.Name(rawValue: Constants.Strings.gridChangeNotification)
-        NotificationCenter.default.post(name: gridNotification, object: grid)
+        NotificationCenter.default.post(Notification(name: gridNotification, object: nil, userInfo: ["grid": gridView.grid]))
     }
 }
