@@ -133,6 +133,13 @@ extension Grid: Sequence {
         private var grid: GridProtocol
         private var history: GridHistory!
         
+        public var living: [GridPosition] { return history.positions.filter { return  grid[$0, $1].isAlive   } }
+        public var dead  : [GridPosition] { return history.positions.filter { return !grid[$0, $1].isAlive   } }
+        public var alive : [GridPosition] { return history.positions.filter { return  grid[$0, $1] == .alive } }
+        public var born  : [GridPosition] { return history.positions.filter { return  grid[$0, $1] == .born  } }
+        public var died  : [GridPosition] { return history.positions.filter { return  grid[$0, $1] == .died  } }
+        public var empty : [GridPosition] { return history.positions.filter { return  grid[$0, $1] == .empty } }
+
         init(grid: Grid) {
             self.grid = grid
             self.history = GridHistory(grid.living)

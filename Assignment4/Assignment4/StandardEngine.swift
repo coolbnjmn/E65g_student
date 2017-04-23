@@ -35,7 +35,9 @@ class StandardEngine: EngineProtocol {
     }
     
     func step() -> GridProtocol {
-        return grid.next()
+        grid = grid.next()
+        delegate?.engineDidUpdate(withGrid: grid)
+        return grid
     }
 
 }

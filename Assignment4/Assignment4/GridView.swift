@@ -15,7 +15,7 @@ protocol GridViewDelegate {
 class GridView: UIView {
     var delegate: GridViewDelegate?
     
-    @IBInspectable var size: Int = 20 {
+    @IBInspectable var size: Int = StandardEngine.engine.rows {
         didSet {
             self.grid = Grid(size, size)
         }

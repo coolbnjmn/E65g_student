@@ -16,22 +16,28 @@ class SimulationViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        StandardEngine.engine.delegate = self
-        engineDidUpdate(withGrid: gridView.grid)
         gridView.delegate = self
+        updateEngineAndDisplay()
     }
     
     @IBAction func stepButtonPressed(_ sender: Any) {
         gridView.grid = StandardEngine.engine.step()
-        engineDidUpdate(withGrid: gridView.grid)
+        updateEngineAndDisplay()
+    }
+    
+    func updateEngineAndDisplay() {
+        StandardEngine.engine.grid = gridView.grid
+        StandardEngine.engine.delegate?.engineDidUpdate(withGrid: gridView.grid)
+        gridView.setNeedsDisplay()
     }
 }
 
 extension SimulationViewController: GridViewDelegate {
     func cellStatesChanged() {
-        engineDidUpdate(withGrid: gridView.grid)
+        updateEngineAndDisplay()
     }
 }
+
 extension SimulationViewController: EngineDelegate {
     func engineDidUpdate(withGrid gridFromEngine: GridProtocol) {
         gridView.grid = gridFromEngine
