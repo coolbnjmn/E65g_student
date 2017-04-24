@@ -46,7 +46,7 @@ class InstrumentationViewController: UIViewController {
     func updateGridSize() {
         StandardEngine.engine.rows = Int(rowStepper.value)
         StandardEngine.engine.cols = Int(colStepper.value)
-        StandardEngine.engine.grid = nil
+        StandardEngine.engine.grid = Grid(StandardEngine.engine.rows, StandardEngine.engine.cols) { row, col in .empty }
         StandardEngine.engine.actualGrid = nil
         let newGrid = StandardEngine.engine.grid // load lazy var
         StandardEngine.engine.delegate?.engineDidUpdate(withGrid: newGrid)
@@ -114,6 +114,14 @@ class InstrumentationViewController: UIViewController {
     }
     
     @IBAction func timedRefreshSwitchSwitched(_ sender: Any) {
+        if let timerSwitch = sender as? UISwitch {
+            if timerSwitch.isOn {
+                // start timer
+                StandardEngine.engine.refreshRate = Double(refreshRateSlider.value)
+            } else {
+                StandardEngine.engine.refreshTimer?.invalidate()
+            }
+        }
     }
 }
 

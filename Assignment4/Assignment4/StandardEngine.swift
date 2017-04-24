@@ -37,6 +37,7 @@ class StandardEngine: EngineProtocol {
             }
         }
     }
+    
     var refreshTimer: Timer?
     var rows: Int = 10
     var cols: Int = 10

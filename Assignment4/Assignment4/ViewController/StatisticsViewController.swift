@@ -58,6 +58,7 @@ class StatisticsViewController: UIViewController {
         deadCountLabel.text = "\(gridIterator.died.count)"
         bornCountLabel.text = "\(gridIterator.born.count)"
         emptyCountLabel.text = "\(gridIterator.empty.count)"
+        
         view.setNeedsDisplay()
     }
 }
