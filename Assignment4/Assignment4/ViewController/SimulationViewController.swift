@@ -25,6 +25,11 @@ class SimulationViewController: UIViewController {
         stepButton.isEnabled = (StandardEngine.engine.refreshRate == 0)
     }
     
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+        gridView.setNeedsDisplay()
+    }
+    
     @IBAction func stepButtonPressed(_ sender: Any) {
         let _ = StandardEngine.engine.step()
     }
