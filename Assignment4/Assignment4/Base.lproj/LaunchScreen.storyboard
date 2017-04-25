@@ -72,6 +72,7 @@
                             <constraint firstItem="kZn-2B-HDn" firstAttribute="top" secondItem="5VN-6j-8R9" secondAttribute="bottom" constant="8" id="KX4-90-vlU"/>
                             <constraint firstItem="kZn-2B-HDn" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="KfU-S0-LuW"/>
                             <constraint firstItem="Pwm-Uf-nwo" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="NYn-hH-gFf"/>
+                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" relation="greaterThanOrEqual" secondItem="Pwm-Uf-nwo" secondAttribute="bottom" id="Qpw-mu-ZeS"/>
                             <constraint firstItem="pI3-aZ-8XD" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" constant="-50" id="S06-qZ-QTI"/>
                             <constraint firstItem="pI3-aZ-8XD" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leadingMargin" constant="80" id="Wgx-Uw-VGE"/>
                             <constraint firstItem="5VN-6j-8R9" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="YaY-8S-2Ay"/>
@@ -79,6 +80,7 @@
                             <constraint firstItem="5VN-6j-8R9" firstAttribute="top" secondItem="pI3-aZ-8XD" secondAttribute="bottom" constant="8" id="ccf-3N-pGB"/>
                             <constraint firstItem="cTW-hh-o2V" firstAttribute="top" secondItem="p5F-8O-ej2" secondAttribute="bottom" constant="8" id="hZu-pm-06S"/>
                             <constraint firstItem="pI3-aZ-8XD" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="jfy-pg-f7V"/>
+                            <constraint firstItem="pI3-aZ-8XD" firstAttribute="top" relation="greaterThanOrEqual" secondItem="Ze5-6b-2t3" secondAttribute="topMargin" id="oDi-Fc-SRR"/>
                             <constraint firstItem="p5F-8O-ej2" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="xvo-J1-Npd"/>
                         </constraints>
                     </view>
