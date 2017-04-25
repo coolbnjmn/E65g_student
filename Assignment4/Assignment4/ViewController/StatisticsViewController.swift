@@ -29,9 +29,9 @@ class StatisticsViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(StatisticsViewController.engineDidUpdate(_:)), name: NSNotification.Name(rawValue: Constants.Strings.gridChangeNotification), object: nil)
         
         aliveLabel.text = "# Cells that are alive:"
-        deadLabel.text = "# Cells that just died:"
+        deadLabel.text = "# Cells that are dead:"
         bornLabel.text = "# Cells that were just born:"
-        emptyLabel.text = "# Cells that are dead:"
+        emptyLabel.text = "# Cells that are empty:"
         
         guard let grid: Grid = StandardEngine.engine.grid as? Grid else {
             return
@@ -39,7 +39,7 @@ class StatisticsViewController: UIViewController {
         
         let gridIterator = grid.makeIterator()
         aliveCountLabel.text = "\(gridIterator.alive.count)"
-        deadCountLabel.text = "\(gridIterator.died.count)"
+        deadCountLabel.text = "\(gridIterator.dead.count)"
         bornCountLabel.text = "\(gridIterator.born.count)"
         emptyCountLabel.text = "\(gridIterator.empty.count)"
     }
@@ -55,7 +55,7 @@ class StatisticsViewController: UIViewController {
         
         let gridIterator = grid.makeIterator()
         aliveCountLabel.text = "\(gridIterator.alive.count)"
-        deadCountLabel.text = "\(gridIterator.died.count)"
+        deadCountLabel.text = "\(gridIterator.dead.count)"
         bornCountLabel.text = "\(gridIterator.born.count)"
         emptyCountLabel.text = "\(gridIterator.empty.count)"
         

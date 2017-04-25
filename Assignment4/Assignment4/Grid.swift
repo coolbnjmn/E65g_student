@@ -39,7 +39,9 @@ public protocol GridProtocol {
     var description: String { get }
     var size: GridSize { get }
     subscript (row: Int, col: Int) -> CellState { get set }
-    func next() -> Self 
+    func mapOverGrid<T>(_ transform: (GridPosition, CellState) throws -> (GridPosition, T)) rethrows -> [[(GridPosition, T)]]
+    func reduceOverGrid(_ size: Int, reducer: (Int, GridPosition) -> Int) -> Int
+    func next() -> Self
 }
 
 public let lazyPositions = { (size: GridSize) in
@@ -94,6 +96,41 @@ public struct Grid: GridProtocol {
         set { _cells[norm(row, to: size.rows)][norm(col, to: size.cols)] = newValue }
     }
     
+    public func mapOverGrid<T>(_ transform: (GridPosition, CellState) throws -> (GridPosition, T)) rethrows -> [[(GridPosition, T)]] {
+        return try _cells.map {
+            cellRow in
+            return try cellRow.map {
+                cell in
+                let rowIndex: Array.Index? = _cells.index(where: {
+                    cellsRow in
+                    let sameItems: [Bool] = cellsRow.map {
+                        cellItem in
+                        return (cellRow[cellsRow.index(of: cellItem) ?? 0] == cellItem)
+                    }
+                    return cellRow.count == cellsRow.count && sameItems.reduce(false, {
+                        partialResult, nextItem in
+                        return partialResult || nextItem
+                    })
+                })
+                //                let row = _cells.index(of: cellRow)
+                let colIndex: Array.Index? = cellRow.index(of: cell)
+                guard let position: (Int, Int) = (rowIndex, colIndex) as? (Int, Int) else {
+                    return try transform((0,0), cell)
+                }
+                
+                return try transform(position, cell)
+            }
+        }
+    }
+    
+    public func reduceOverGrid(_ size: Int, reducer: (Int, GridPosition) -> Int) -> Int {
+        return (0 ..< size).reduce(0) { (total: Int, row: Int) -> Int in
+            return (0 ..< size).reduce(total) { (subtotal, col) -> Int in
+                return reducer(subtotal, (row, col))
+            }
+        }
+    }
+
     public init(_ rows: Int, _ cols: Int, cellInitializer: (GridPosition) -> CellState = { _, _ in .empty }) {
         _cells = [[CellState]](repeatElement( [CellState](repeatElement(.empty, count: rows)), count: cols))
         size = GridSize(rows, cols)
@@ -134,11 +171,49 @@ extension Grid: Sequence {
         private var history: GridHistory!
         
         public var living: [GridPosition] { return history.positions.filter { return  grid[$0, $1].isAlive   } }
-        public var dead  : [GridPosition] { return history.positions.filter { return !grid[$0, $1].isAlive   } }
+        public var dead  : [GridPosition] {
+            var positions = [GridPosition]()
+            
+            let deadCount = grid.reduceOverGrid(grid.size.rows, reducer: {
+                subtotal, position in
+                if !grid[(position.row, position.col)].isAlive {
+                    positions.append(position)
+                    return subtotal + 1
+                } else {
+                    return subtotal
+                }
+            })
+            
+            guard deadCount == positions.count else {
+                // something went wrong??
+                assertionFailure("Whoops, what went wrong here?")
+                return []
+            }
+            return positions
+        }
         public var alive : [GridPosition] { return history.positions.filter { return  grid[$0, $1] == .alive } }
         public var born  : [GridPosition] { return history.positions.filter { return  grid[$0, $1] == .born  } }
         public var died  : [GridPosition] { return history.positions.filter { return  grid[$0, $1] == .died  } }
-        public var empty : [GridPosition] { return history.positions.filter { return  grid[$0, $1] == .empty } }
+        public var empty : [GridPosition] {
+            var positions = [GridPosition]()
+            
+            let emptyCount = grid.reduceOverGrid(grid.size.rows, reducer: {
+                subtotal, position in
+                if grid[(position.row, position.col)] == .empty {
+                    positions.append(position)
+                    return subtotal + 1
+                } else {
+                    return subtotal
+                }
+            })
+            
+            guard emptyCount == positions.count else {
+                // something went wrong??
+                assertionFailure("Whoops, what went wrong here?")
+                return []
+            }
+            return positions
+        }
 
         init(grid: Grid) {
             self.grid = grid

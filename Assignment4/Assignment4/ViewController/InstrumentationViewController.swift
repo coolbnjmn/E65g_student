@@ -28,7 +28,7 @@ class InstrumentationViewController: UIViewController {
     
     @IBOutlet weak var timedRefreshLabel: UILabel!
     @IBOutlet weak var timedRefreshSwitch: UISwitch!
-    
+        
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
@@ -41,6 +41,8 @@ class InstrumentationViewController: UIViewController {
         
         rowTextField.text = "\(rowStepper.value)"
         colTextField.text = "\(colStepper.value)"
+        
+        let contentInset: CGFloat = 12
     }
     
     func updateGridSize() {
