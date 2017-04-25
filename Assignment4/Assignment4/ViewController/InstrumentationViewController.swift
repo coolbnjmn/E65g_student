@@ -41,8 +41,6 @@ class InstrumentationViewController: UIViewController {
         
         rowTextField.text = "\(rowStepper.value)"
         colTextField.text = "\(colStepper.value)"
-        
-        let contentInset: CGFloat = 12
     }
     
     func updateGridSize() {
@@ -51,7 +49,6 @@ class InstrumentationViewController: UIViewController {
     }
 
     // MARK :- IBActions
-
     @IBAction func rowTextFieldChanged(_ sender: Any) {
         let newValue = Double(Int(((Double(rowTextField.text ?? "") ?? rowStepper.value)*100).rounded()/100))
         
