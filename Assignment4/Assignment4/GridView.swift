@@ -8,15 +8,18 @@
 import UIKit
 
 protocol GridViewDelegate {
-    func cellStatesChanged()
+    func cellStateChanged(_ position: (Int, Int), newState: CellState)
 }
 
 class GridView: UIView {
     var delegate: GridViewDelegate?
     
-    @IBInspectable var size: Int = StandardEngine.engine.rows {
-        didSet {
-            self.grid = Grid(size, size)
+    @IBInspectable var size: Int {
+        get {
+            return StandardEngine.engine.rows
+        }
+        set {
+            self.setNeedsDisplay()
         }
     }
     
@@ -27,10 +30,17 @@ class GridView: UIView {
     @IBInspectable var gridColor: UIColor = UIColor.gray
     @IBInspectable var gridWidth: CGFloat = 2.0
     
-    var grid: GridProtocol
+    var grid: GridProtocol {
+        get {
+            return StandardEngine.engine.grid
+        }
+        set {
+            StandardEngine.engine.delegate?.engineDidUpdate(withGrid: self.grid)
+            self.setNeedsDisplay()
+        }
+    }
     
     required init?(coder aDecoder: NSCoder) {
-        self.grid = Grid(size, size)
         super.init(coder: aDecoder)
     }
     
@@ -108,7 +118,6 @@ class GridView: UIView {
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         lastTouchedPosition = nil
-        delegate?.cellStatesChanged()
     }
     
     typealias Position = (row: Int, col: Int)
@@ -127,7 +136,7 @@ class GridView: UIView {
             || lastTouchedPosition?.col != pos.col
             else { return pos }
         
-        grid[(pos.row,pos.col)] = CellState.toggle(grid[(pos.row,pos.col)])
+        delegate?.cellStateChanged(pos, newState: CellState.toggle(grid[(pos.row, pos.col)]))
         setNeedsDisplay()
         return pos
     }

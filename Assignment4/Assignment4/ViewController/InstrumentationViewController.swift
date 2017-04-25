@@ -46,10 +46,6 @@ class InstrumentationViewController: UIViewController {
     func updateGridSize() {
         StandardEngine.engine.rows = Int(rowStepper.value)
         StandardEngine.engine.cols = Int(colStepper.value)
-        StandardEngine.engine.grid = Grid(StandardEngine.engine.rows, StandardEngine.engine.cols) { row, col in .empty }
-        StandardEngine.engine.actualGrid = nil
-        let newGrid = StandardEngine.engine.grid // load lazy var
-        StandardEngine.engine.delegate?.engineDidUpdate(withGrid: newGrid)
     }
 
     // MARK :- IBActions
@@ -111,6 +107,7 @@ class InstrumentationViewController: UIViewController {
 
     @IBAction func refreshRateSliderSlid(_ sender: Any) {
         refreshRateTextField.text = "\((refreshRateSlider.value*100).rounded()/100)"
+        StandardEngine.engine.refreshRate = Double(refreshRateTextField.text ?? "\((refreshRateSlider.value*100).rounded()/100)") ?? (Double((refreshRateSlider.value*100).rounded())/100)
     }
     
     @IBAction func timedRefreshSwitchSwitched(_ sender: Any) {
@@ -119,7 +116,7 @@ class InstrumentationViewController: UIViewController {
                 // start timer
                 StandardEngine.engine.refreshRate = Double(refreshRateSlider.value)
             } else {
-                StandardEngine.engine.refreshTimer?.invalidate()
+                StandardEngine.engine.refreshRate = 0
             }
         }
     }

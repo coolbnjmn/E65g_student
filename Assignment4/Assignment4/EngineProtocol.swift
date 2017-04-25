@@ -10,7 +10,7 @@ import Foundation
 
 protocol EngineProtocol {
     var delegate: EngineDelegate? { get set }
-    var grid: GridProtocol { get set }
+    var grid: GridProtocol { get }
     var refreshRate: Double { get set }
     var refreshTimer: Timer? { get set }
     var rows: Int { get set }
