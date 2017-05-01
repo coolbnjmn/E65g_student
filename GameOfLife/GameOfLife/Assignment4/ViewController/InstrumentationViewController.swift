@@ -32,6 +32,7 @@ class InstrumentationViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
+        let _ = ConfigurationsDataSource()
     }
     
     func setupUI() {

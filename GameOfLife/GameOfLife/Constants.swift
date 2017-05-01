@@ -17,6 +17,7 @@ public struct Constants {
     public struct Defaults {
         static let defaultColCount: Int = 10
         static let defaultRowCount: Int = 10
+        static let defaultDataURL: String = "https://dl.dropboxusercontent.com/u/7544475/S65g.json"
     }
     
     public struct Palette {
