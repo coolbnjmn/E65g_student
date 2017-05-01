@@ -38,10 +38,14 @@ class StatisticsViewController: UIViewController {
         }
         
         let gridIterator = grid.makeIterator()
-        aliveCountLabel.text = "\(gridIterator.alive.count)"
-        deadCountLabel.text = "\(gridIterator.dead.count)"
-        bornCountLabel.text = "\(gridIterator.born.count)"
-        emptyCountLabel.text = "\(gridIterator.empty.count)"
+        let newAliveCount: Int = (Int(aliveCountLabel.text ?? "") ?? 0) + gridIterator.alive.count
+        aliveCountLabel.text = "\(newAliveCount)"
+        let newDeadCount: Int = (Int(deadCountLabel.text ?? "") ?? 0) + gridIterator.dead.count
+        deadCountLabel.text = "\(newDeadCount)"
+        let newBornCount: Int = (Int(bornCountLabel.text ?? "") ?? 0) + gridIterator.born.count
+        bornCountLabel.text = "\(newBornCount)"
+        let newEmptyCount: Int = (Int(emptyCountLabel.text ?? "") ?? 0) + gridIterator.empty.count
+        emptyCountLabel.text = "\(newEmptyCount)"
     }
     
     deinit {
@@ -54,10 +58,14 @@ class StatisticsViewController: UIViewController {
         }
         
         let gridIterator = grid.makeIterator()
-        aliveCountLabel.text = "\(gridIterator.alive.count)"
-        deadCountLabel.text = "\(gridIterator.dead.count)"
-        bornCountLabel.text = "\(gridIterator.born.count)"
-        emptyCountLabel.text = "\(gridIterator.empty.count)"
+        let newAliveCount: Int = (Int(aliveCountLabel.text ?? "") ?? 0) + gridIterator.alive.count
+        aliveCountLabel.text = "\(newAliveCount)"
+        let newDeadCount: Int = (Int(deadCountLabel.text ?? "") ?? 0) + gridIterator.dead.count
+        deadCountLabel.text = "\(newDeadCount)"
+        let newBornCount: Int = (Int(bornCountLabel.text ?? "") ?? 0) + gridIterator.born.count
+        bornCountLabel.text = "\(newBornCount)"
+        let newEmptyCount: Int = (Int(emptyCountLabel.text ?? "") ?? 0) + gridIterator.empty.count
+        emptyCountLabel.text = "\(newEmptyCount)"
         
         view.setNeedsDisplay()
     }
