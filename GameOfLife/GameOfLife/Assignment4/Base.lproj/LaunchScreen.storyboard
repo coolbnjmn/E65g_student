@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="EHf-IW-A2E">
+            <objects>
+                <viewController id="01J-lp-oVM" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Llm-lL-Icb"/>
+                        <viewControllerLayoutGuide type="bottom" id="xb3-aO-Qok"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="gliderIcon" translatesAutoresizingMaskIntoConstraints="NO" id="pI3-aZ-8XD">
+                                <rect key="frame" x="96" y="192" width="183" height="183"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="pI3-aZ-8XD" secondAttribute="height" multiplier="1:1" id="0OP-Lj-sWE"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Icons by Benjamin Hendricks" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="12" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5VN-6j-8R9">
+                                <rect key="frame" x="20.5" y="383" width="334" height="29"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="24"/>
+                                <color key="textColor" red="0.1764705882" green="0.78039215689999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Designed with SketchApp" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="12" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kZn-2B-HDn">
+                                <rect key="frame" x="12" y="420" width="351" height="29"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="24"/>
+                                <color key="textColor" red="0.1764705882" green="0.78039215689999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="https://www.sketchapp.com/" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="12" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="p5F-8O-ej2">
+                                <rect key="frame" x="12" y="457" width="351" height="24"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="20"/>
+                                <color key="textColor" red="0.29809393381137927" green="0.54543700537251694" blue="0.65070664787798416" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Color pallete from Coolor" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="12" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cTW-hh-o2V">
+                                <rect key="frame" x="12" y="489" width="351" height="29"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="24"/>
+                                <color key="textColor" red="0.1764705882" green="0.78039215689999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="https://coolors.co/" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="12" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Pwm-Uf-nwo">
+                                <rect key="frame" x="28" y="526" width="319" height="24"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="20"/>
+                                <color key="textColor" red="0.29809393379999999" green="0.54543700539999995" blue="0.65070664789999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.90980392156862744" green="0.88627450980392153" blue="0.53333333333333333" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="5VN-6j-8R9" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Ze5-6b-2t3" secondAttribute="leading" constant="12" id="4yZ-9p-chz"/>
+                            <constraint firstItem="p5F-8O-ej2" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" constant="12" id="6ln-at-HJ6"/>
+                            <constraint firstItem="p5F-8O-ej2" firstAttribute="top" secondItem="kZn-2B-HDn" secondAttribute="bottom" constant="8" id="77u-e1-blo"/>
+                            <constraint firstItem="cTW-hh-o2V" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" constant="12" id="81c-Bu-6bx"/>
+                            <constraint firstItem="cTW-hh-o2V" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="9jH-7F-fF0"/>
+                            <constraint firstItem="Pwm-Uf-nwo" firstAttribute="top" secondItem="cTW-hh-o2V" secondAttribute="bottom" constant="8" id="CwK-I6-iBF"/>
+                            <constraint firstItem="Pwm-Uf-nwo" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leadingMargin" constant="12" id="FPZ-IS-LC8"/>
+                            <constraint firstItem="kZn-2B-HDn" firstAttribute="top" secondItem="5VN-6j-8R9" secondAttribute="bottom" constant="8" id="KX4-90-vlU"/>
+                            <constraint firstItem="kZn-2B-HDn" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="KfU-S0-LuW"/>
+                            <constraint firstItem="Pwm-Uf-nwo" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="NYn-hH-gFf"/>
+                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" relation="greaterThanOrEqual" secondItem="Pwm-Uf-nwo" secondAttribute="bottom" id="Qpw-mu-ZeS"/>
+                            <constraint firstItem="pI3-aZ-8XD" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" constant="-50" id="S06-qZ-QTI"/>
+                            <constraint firstItem="pI3-aZ-8XD" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leadingMargin" constant="80" id="Wgx-Uw-VGE"/>
+                            <constraint firstItem="5VN-6j-8R9" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="YaY-8S-2Ay"/>
+                            <constraint firstItem="kZn-2B-HDn" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" constant="12" id="aEV-ka-ZtE"/>
+                            <constraint firstItem="5VN-6j-8R9" firstAttribute="top" secondItem="pI3-aZ-8XD" secondAttribute="bottom" constant="8" id="ccf-3N-pGB"/>
+                            <constraint firstItem="cTW-hh-o2V" firstAttribute="top" secondItem="p5F-8O-ej2" secondAttribute="bottom" constant="8" id="hZu-pm-06S"/>
+                            <constraint firstItem="pI3-aZ-8XD" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="jfy-pg-f7V"/>
+                            <constraint firstItem="pI3-aZ-8XD" firstAttribute="top" relation="greaterThanOrEqual" secondItem="Ze5-6b-2t3" secondAttribute="topMargin" id="oDi-Fc-SRR"/>
+                            <constraint firstItem="p5F-8O-ej2" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="xvo-J1-Npd"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="53" y="375"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="gliderIcon" width="200" height="200"/>
+    </resources>
+</document>

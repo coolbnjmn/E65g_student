@@ -7,13 +7,22 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		B211829F1EB78FB100282781 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B211829E1EB78FB100282781 /* AppDelegate.swift */; };
-		B21182A11EB78FB100282781 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B21182A01EB78FB100282781 /* ViewController.swift */; };
-		B21182A41EB78FB100282781 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B21182A21EB78FB100282781 /* Main.storyboard */; };
 		B21182A61EB78FB100282781 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B21182A51EB78FB100282781 /* Assets.xcassets */; };
 		B21182A91EB78FB100282781 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B21182A71EB78FB100282781 /* LaunchScreen.storyboard */; };
 		B21182B41EB78FB200282781 /* GameOfLifeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B21182B31EB78FB200282781 /* GameOfLifeTests.swift */; };
 		B21182BF1EB78FB200282781 /* GameOfLifeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B21182BE1EB78FB200282781 /* GameOfLifeUITests.swift */; };
+		B21182F71EB791B200282781 /* InstrumentationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B21182DC1EB791B200282781 /* InstrumentationViewController.swift */; };
+		B21182F81EB791B200282781 /* SimulationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B21182DD1EB791B200282781 /* SimulationViewController.swift */; };
+		B21182F91EB791B200282781 /* StatisticsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B21182DE1EB791B200282781 /* StatisticsViewController.swift */; };
+		B21182FD1EB791B200282781 /* Grid.swift in Sources */ = {isa = PBXBuildFile; fileRef = B21182E21EB791B200282781 /* Grid.swift */; };
+		B21182FE1EB791B200282781 /* EngineDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B21182E31EB791B200282781 /* EngineDelegate.swift */; };
+		B21182FF1EB791B200282781 /* EngineProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = B21182E41EB791B200282781 /* EngineProtocol.swift */; };
+		B21183001EB791B200282781 /* GridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B21182E51EB791B200282781 /* GridView.swift */; };
+		B21183011EB791B200282781 /* StandardEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = B21182E61EB791B200282781 /* StandardEngine.swift */; };
+		B21183021EB791B200282781 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B21182E71EB791B200282781 /* AppDelegate.swift */; };
+		B21183031EB791B200282781 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B21182E81EB791B200282781 /* Constants.swift */; };
+		B21183041EB791B200282781 /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = B21182E91EB791B200282781 /* Helpers.swift */; };
+		B21183051EB791B200282781 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B21182EA1EB791B200282781 /* Main.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,9 +44,6 @@
 
 /* Begin PBXFileReference section */
 		B211829B1EB78FB100282781 /* GameOfLife.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GameOfLife.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		B211829E1EB78FB100282781 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		B21182A01EB78FB100282781 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		B21182A31EB78FB100282781 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B21182A51EB78FB100282781 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B21182A81EB78FB100282781 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B21182AA1EB78FB100282781 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -47,6 +53,18 @@
 		B21182BA1EB78FB200282781 /* GameOfLifeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GameOfLifeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B21182BE1EB78FB200282781 /* GameOfLifeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOfLifeUITests.swift; sourceTree = "<group>"; };
 		B21182C01EB78FB200282781 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B21182DC1EB791B200282781 /* InstrumentationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InstrumentationViewController.swift; sourceTree = "<group>"; };
+		B21182DD1EB791B200282781 /* SimulationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimulationViewController.swift; sourceTree = "<group>"; };
+		B21182DE1EB791B200282781 /* StatisticsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatisticsViewController.swift; sourceTree = "<group>"; };
+		B21182E21EB791B200282781 /* Grid.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Grid.swift; sourceTree = "<group>"; };
+		B21182E31EB791B200282781 /* EngineDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EngineDelegate.swift; sourceTree = "<group>"; };
+		B21182E41EB791B200282781 /* EngineProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EngineProtocol.swift; sourceTree = "<group>"; };
+		B21182E51EB791B200282781 /* GridView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GridView.swift; sourceTree = "<group>"; };
+		B21182E61EB791B200282781 /* StandardEngine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StandardEngine.swift; sourceTree = "<group>"; };
+		B21182E71EB791B200282781 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		B21182E81EB791B200282781 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		B21182E91EB791B200282781 /* Helpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
+		B21182EA1EB791B200282781 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,9 +115,16 @@
 		B211829D1EB78FB100282781 /* GameOfLife */ = {
 			isa = PBXGroup;
 			children = (
-				B211829E1EB78FB100282781 /* AppDelegate.swift */,
-				B21182A01EB78FB100282781 /* ViewController.swift */,
-				B21182A21EB78FB100282781 /* Main.storyboard */,
+				B21182DB1EB791B200282781 /* ViewController */,
+				B21182E21EB791B200282781 /* Grid.swift */,
+				B21182E31EB791B200282781 /* EngineDelegate.swift */,
+				B21182E41EB791B200282781 /* EngineProtocol.swift */,
+				B21182E51EB791B200282781 /* GridView.swift */,
+				B21182E61EB791B200282781 /* StandardEngine.swift */,
+				B21182E71EB791B200282781 /* AppDelegate.swift */,
+				B21182E81EB791B200282781 /* Constants.swift */,
+				B21182E91EB791B200282781 /* Helpers.swift */,
+				B21182EA1EB791B200282781 /* Main.storyboard */,
 				B21182A51EB78FB100282781 /* Assets.xcassets */,
 				B21182A71EB78FB100282781 /* LaunchScreen.storyboard */,
 				B21182AA1EB78FB100282781 /* Info.plist */,
@@ -123,6 +148,17 @@
 				B21182C01EB78FB200282781 /* Info.plist */,
 			);
 			path = GameOfLifeUITests;
+			sourceTree = "<group>";
+		};
+		B21182DB1EB791B200282781 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				B21182DC1EB791B200282781 /* InstrumentationViewController.swift */,
+				B21182DD1EB791B200282781 /* SimulationViewController.swift */,
+				B21182DE1EB791B200282781 /* StatisticsViewController.swift */,
+			);
+			name = ViewController;
+			path = Assignment4/ViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -193,6 +229,7 @@
 				TargetAttributes = {
 					B211829A1EB78FB100282781 = {
 						CreatedOnToolsVersion = 8.3.2;
+						LastSwiftMigration = 0830;
 						ProvisioningStyle = Automatic;
 					};
 					B21182AE1EB78FB200282781 = {
@@ -234,9 +271,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B21183051EB791B200282781 /* Main.storyboard in Resources */,
 				B21182A91EB78FB100282781 /* LaunchScreen.storyboard in Resources */,
 				B21182A61EB78FB100282781 /* Assets.xcassets in Resources */,
-				B21182A41EB78FB100282781 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -261,8 +298,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B21182A11EB78FB100282781 /* ViewController.swift in Sources */,
-				B211829F1EB78FB100282781 /* AppDelegate.swift in Sources */,
+				B21183011EB791B200282781 /* StandardEngine.swift in Sources */,
+				B21182FE1EB791B200282781 /* EngineDelegate.swift in Sources */,
+				B21182F81EB791B200282781 /* SimulationViewController.swift in Sources */,
+				B21182F71EB791B200282781 /* InstrumentationViewController.swift in Sources */,
+				B21183021EB791B200282781 /* AppDelegate.swift in Sources */,
+				B21182F91EB791B200282781 /* StatisticsViewController.swift in Sources */,
+				B21183031EB791B200282781 /* Constants.swift in Sources */,
+				B21182FD1EB791B200282781 /* Grid.swift in Sources */,
+				B21183041EB791B200282781 /* Helpers.swift in Sources */,
+				B21182FF1EB791B200282781 /* EngineProtocol.swift in Sources */,
+				B21183001EB791B200282781 /* GridView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -298,14 +344,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		B21182A21EB78FB100282781 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				B21182A31EB78FB100282781 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		B21182A71EB78FB100282781 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -416,12 +454,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = GameOfLife/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = bwh.GameOfLife;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -430,6 +470,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = GameOfLife/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
