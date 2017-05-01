@@ -28,7 +28,17 @@ class GridView: UIView {
     @IBInspectable var bornColor: UIColor = UIColor.green.withAlphaComponent(0.6)
     @IBInspectable var diedColor: UIColor = UIColor.darkGray.withAlphaComponent(0.6)
     @IBInspectable var gridColor: UIColor = UIColor.gray
-    @IBInspectable var gridWidth: CGFloat = 2.0
+    @IBInspectable var gridWidth: CGFloat {
+        /**
+        Inversely related:
+         Changing from 10 to 40 rows, grid line width (2px @ 10 rows) is divided by [new row count] / [old row count]
+         [new line width] = [ref line width] / ([new row count] / [ref row count])
+         EX: ?? = 2 / (40 / 10) == 0.5 (new line width)
+         */
+        get {
+            return (CGFloat(2.0) / (CGFloat(StandardEngine.engine.rows) / CGFloat(10)))
+        }
+    }
     
     var grid: GridProtocol {
         get {
