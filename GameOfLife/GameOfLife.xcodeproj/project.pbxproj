@@ -23,6 +23,7 @@
 		B21183031EB791B200282781 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B21182E81EB791B200282781 /* Constants.swift */; };
 		B21183041EB791B200282781 /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = B21182E91EB791B200282781 /* Helpers.swift */; };
 		B21183051EB791B200282781 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B21182EA1EB791B200282781 /* Main.storyboard */; };
+		B2AC28EB1EB8D19F00419A4A /* ConfigurationsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2AC28EA1EB8D19F00419A4A /* ConfigurationsController.swift */; };
 		B2DE98A21EB7A54300885A76 /* NetworkFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2DE98A11EB7A54300885A76 /* NetworkFetcher.swift */; };
 		B2DE98A41EB7A56900885A76 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2DE98A31EB7A56900885A76 /* NetworkManager.swift */; };
 		B2DE98A61EB7A6E500885A76 /* ConfigurationsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2DE98A51EB7A6E500885A76 /* ConfigurationsDataSource.swift */; };
@@ -69,6 +70,7 @@
 		B21182E81EB791B200282781 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		B21182E91EB791B200282781 /* Helpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
 		B21182EA1EB791B200282781 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		B2AC28EA1EB8D19F00419A4A /* ConfigurationsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigurationsController.swift; sourceTree = "<group>"; };
 		B2DE98A11EB7A54300885A76 /* NetworkFetcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkFetcher.swift; sourceTree = "<group>"; };
 		B2DE98A31EB7A56900885A76 /* NetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		B2DE98A51EB7A6E500885A76 /* ConfigurationsDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigurationsDataSource.swift; sourceTree = "<group>"; };
@@ -140,6 +142,7 @@
 				B21182A51EB78FB100282781 /* Assets.xcassets */,
 				B21182A71EB78FB100282781 /* LaunchScreen.storyboard */,
 				B21182AA1EB78FB100282781 /* Info.plist */,
+				B2AC28EA1EB8D19F00419A4A /* ConfigurationsController.swift */,
 			);
 			path = GameOfLife;
 			sourceTree = "<group>";
@@ -318,6 +321,7 @@
 				B21183021EB791B200282781 /* AppDelegate.swift in Sources */,
 				B2DE98A81EB7A93E00885A76 /* Configuration.swift in Sources */,
 				B21182F91EB791B200282781 /* StatisticsViewController.swift in Sources */,
+				B2AC28EB1EB8D19F00419A4A /* ConfigurationsController.swift in Sources */,
 				B21183031EB791B200282781 /* Constants.swift in Sources */,
 				B21182FD1EB791B200282781 /* Grid.swift in Sources */,
 				B21183041EB791B200282781 /* Helpers.swift in Sources */,

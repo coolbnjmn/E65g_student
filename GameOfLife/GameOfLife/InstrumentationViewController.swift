@@ -32,6 +32,7 @@ class InstrumentationViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
+        let _ = ConfigurationsDataSource()
     }
     
     func setupUI() {
@@ -106,14 +107,14 @@ class InstrumentationViewController: UIViewController {
 
     @IBAction func refreshRateSliderSlid(_ sender: Any) {
         refreshRateTextField.text = "\((refreshRateSlider.value*100).rounded()/100)"
-        StandardEngine.engine.refreshRate = Double(refreshRateTextField.text ?? "\((refreshRateSlider.value*100).rounded()/100)") ?? (Double((refreshRateSlider.value*100).rounded())/100)
+        StandardEngine.engine.refreshRate = 1/(Double(refreshRateTextField.text ?? "\((refreshRateSlider.value*100).rounded()/100)") ?? (Double((refreshRateSlider.value*100).rounded())/100))
     }
     
     @IBAction func timedRefreshSwitchSwitched(_ sender: Any) {
         if let timerSwitch = sender as? UISwitch {
             if timerSwitch.isOn {
                 // start timer
-                StandardEngine.engine.refreshRate = Double(refreshRateSlider.value)
+                StandardEngine.engine.refreshRate = 1/(Double(refreshRateSlider.value))
             } else {
                 StandardEngine.engine.refreshRate = 0
             }
