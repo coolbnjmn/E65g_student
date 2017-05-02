@@ -580,6 +580,7 @@
                                                             </label>
                                                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sHs-Hh-OCl">
                                                                 <rect key="frame" x="8" y="41" width="340" height="240.5"/>
+                                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                                 <connections>
                                                                     <segue destination="w5c-DX-u1l" kind="embed" id="wFg-sk-g36"/>
                                                                 </connections>
@@ -610,6 +611,7 @@
                                                     <constraint firstItem="VyF-LH-zOR" firstAttribute="top" secondItem="mKg-qI-SXb" secondAttribute="top" id="Nxk-Np-xoE"/>
                                                     <constraint firstItem="VyF-LH-zOR" firstAttribute="leading" secondItem="mKg-qI-SXb" secondAttribute="leading" id="TZj-kF-aTO"/>
                                                 </constraints>
+                                                <variation key="heightClass=compact" axis="horizontal"/>
                                             </stackView>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -644,6 +646,7 @@
                         <outlet property="colLabel" destination="jRS-76-Uyc" id="S8y-0y-2Ox"/>
                         <outlet property="colStepper" destination="jno-qP-7AI" id="y36-ix-jXH"/>
                         <outlet property="colTextField" destination="YYf-R1-zbN" id="Ec7-aB-X7F"/>
+                        <outlet property="configurationsContainerView" destination="sHs-Hh-OCl" id="nNc-dE-OWV"/>
                         <outlet property="refreshRateKeyFirstLabel" destination="AoU-H2-liZ" id="Ik7-6J-2R9"/>
                         <outlet property="refreshRateKeyImageView" destination="UhB-hJ-Rz5" id="vM1-E4-FzF"/>
                         <outlet property="refreshRateKeySecondLabel" destination="zSu-ZG-EHZ" id="uAy-Ta-08f"/>
@@ -655,6 +658,7 @@
                         <outlet property="rowTextField" destination="WnK-MY-wTz" id="2e2-gC-c3j"/>
                         <outlet property="timedRefreshLabel" destination="80R-Ie-leK" id="xdz-gP-xPq"/>
                         <outlet property="timedRefreshSwitch" destination="3kZ-FD-Ofy" id="kPF-er-luv"/>
+                        <outlet property="topLevelStackView" destination="mKg-qI-SXb" id="pQ5-dh-Wbb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="f2A-Zx-igO" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -675,7 +679,7 @@
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="9Oi-7W-lmc">
                                 <rect key="frame" x="0.0" y="0.0" width="340" height="240.5"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="configurationCell" id="lVy-TV-c4f">
                                         <rect key="frame" x="0.0" y="28" width="340" height="44"/>
@@ -683,7 +687,9 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="lVy-TV-c4f" id="vrN-Z4-06k">
                                             <rect key="frame" x="0.0" y="0.0" width="340" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -691,7 +697,7 @@
                                 </connections>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="nBM-71-xhk" firstAttribute="top" secondItem="9Oi-7W-lmc" secondAttribute="bottom" id="t4h-fI-yph"/>
                             <constraint firstItem="9Oi-7W-lmc" firstAttribute="top" secondItem="itr-vO-pZN" secondAttribute="bottom" id="x6d-lE-COB"/>

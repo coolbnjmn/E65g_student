@@ -28,11 +28,13 @@ class InstrumentationViewController: UIViewController {
     
     @IBOutlet weak var timedRefreshLabel: UILabel!
     @IBOutlet weak var timedRefreshSwitch: UISwitch!
-        
+    
+    @IBOutlet weak var topLevelStackView: UIStackView!
+    @IBOutlet weak var configurationsContainerView: UIView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
-        let _ = ConfigurationsDataSource()
     }
     
     func setupUI() {

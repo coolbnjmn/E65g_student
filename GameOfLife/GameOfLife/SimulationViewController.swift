@@ -27,7 +27,7 @@ class SimulationViewController: UIViewController {
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
-        gridView.setNeedsDisplay()
+        gridView?.setNeedsDisplay()
     }
     
     @IBAction func stepButtonPressed(_ sender: Any) {

@@ -11,7 +11,7 @@ import UIKit
 class ConfigurationsDataSource: NSObject {
     var configurations: [Configuration]? = nil
     
-    init(_ dataSourceUrlString: String = Constants.Defaults.defaultDataURL) {
+    init(_ dataSourceUrlString: String = Constants.Defaults.defaultDataURL, tableView: UITableView) {
         super.init()
         NetworkManager.shared.fetchDataFromURL(dataSourceUrlString) {
             success, json in
@@ -19,6 +19,7 @@ class ConfigurationsDataSource: NSObject {
                 Configuration.decodeJsonIntoConfigurations(json) {
                     configurationArray in
                     self.configurations = configurationArray
+                    tableView.reloadData()
                 }
             } else {
                 self.configurations = nil

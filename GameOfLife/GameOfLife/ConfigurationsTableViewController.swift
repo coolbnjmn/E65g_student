@@ -11,7 +11,9 @@ import UIKit
 class ConfigurationsTableViewController: UIViewController {
     @IBOutlet weak var configurationsTableView: UITableView!
     
-    var configurationsDataSource = ConfigurationsDataSource() // uses default url
+    lazy var configurationsDataSource: ConfigurationsDataSource = {
+        return ConfigurationsDataSource(tableView: self.configurationsTableView) // uses default url
+    }()
  
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,6 +23,6 @@ class ConfigurationsTableViewController: UIViewController {
 
 extension ConfigurationsTableViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 }
