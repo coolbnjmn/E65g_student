@@ -14,6 +14,6 @@ protocol StoryboardIdentifiable {
 
 extension StoryboardIdentifiable {
     static var storyboardIdentifier: String {
-        return String(describing: type(of: self))
+        return String(describing: self)
     }
 }

@@ -18,6 +18,7 @@ public struct Constants {
         static let defaultColCount: Int = 10
         static let defaultRowCount: Int = 10
         static let defaultDataURL: String = "https://dl.dropboxusercontent.com/u/7544475/S65g.json"
+        static let defaultGridLineWidth: CGFloat = 2.0
     }
     
     public struct Palette {

@@ -30,9 +30,14 @@ extension ConfigurationsTableViewController: UITableViewDelegate {
             return
         }
 
-        GridEditorEngine.engine.grid = configuration.generateGridWithContents()
         let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        let gridEditorViewController = mainStoryboard.instantiateViewController(withIdentifier: GridEditorViewController.storyboardIdentifier)
-        presentingViewController?.navigationController?.pushViewController(gridEditorViewController, animated: true)
+        guard let gridEditorViewController = mainStoryboard.instantiateViewController(withIdentifier: GridEditorViewController.storyboardIdentifier) as? GridEditorViewController else {
+            assertionFailure("Could not properly instantiate a grid editor view controller")
+            return
+        }
+
+        gridEditorViewController.gridConfiguration = configuration
+        // this view controller is embedded inside instrumentation, so we want instrumentation to push the VC...
+        parent?.navigationController?.pushViewController(gridEditorViewController, animated: true)
     }
 }

@@ -40,41 +40,59 @@ extension Configuration {
 }
 
 extension Configuration {
-    public func generateGridWithContents() -> Grid {
+    public func generateGridWithContents(_ completion: @escaping (Grid?)->Void) {
         guard contents.count > 0 else {
             assertionFailure("Configuration isn't properly set up for grid retrieval. Empty grid coming!")
-            return Grid(Constants.Defaults.defaultRowCount, Constants.Defaults.defaultColCount)
+            completion(nil)
+            return
         }
 
-        let startPositionsOptional: [GridPosition?] = contents.map {
-            startPosition in
-            // startPosition, from JSON format given, is a 2 element array with [row, col] format.
-            guard startPosition.count == 2 else {
-                return nil
+        DispatchQueue.global(qos: .background).async {
+            [weak self]
+            in
+            guard let strongSelf = self else {
+                DispatchQueue.main.async {
+                    completion(nil)
+                }
+                return
             }
-            return GridPosition(row: startPosition[0], col: startPosition[1])
-        }
+            let startPositionsOptional: [GridPosition?] = strongSelf.contents.map {
+                startPosition in
+                // startPosition, from JSON format given, is a 2 element array with [row, col] format.
+                guard startPosition.count == 2 else {
+                    return nil
+                }
+                return GridPosition(row: startPosition[0], col: startPosition[1])
+            }
 
-        var startPositions = [GridPosition]()
-        startPositionsOptional.forEach {
-            optionalPosition in
-            if let position = optionalPosition {
-                startPositions.append(position)
+            var startPositions = [GridPosition]()
+            var maxRow: Int = 0
+            var maxCol: Int = 0
+            startPositionsOptional.forEach {
+                optionalPosition in
+                if let position = optionalPosition {
+                    startPositions.append(position)
+                    maxRow = (position.row > maxRow) ? position.row : maxRow
+                    maxCol = (position.col > maxCol) ? position.col : maxCol
+                }
+            }
+
+            let size: Int = max(maxRow, maxCol) * 2
+            let grid = Grid(size, size, cellInitializer: {
+                position in
+                if startPositions.contains(where: {
+                    row, col in
+                    return row == position.row && col == position.col
+                }) {
+                    return .alive
+                } else {
+                    return .empty
+                }
+            })
+
+            DispatchQueue.main.async {
+                completion(grid)
             }
         }
-
-        let size = startPositions.count
-        let grid = Grid(size, size, cellInitializer: {
-            position in
-            if startPositions.contains(where: {
-                row, col in
-                return row == position.row && col == position.col
-            }) {
-                return .alive
-            } else {
-                return .empty
-            }
-        })
-        return grid
     }
 }

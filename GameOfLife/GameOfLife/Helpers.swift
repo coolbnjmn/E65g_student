@@ -8,6 +8,20 @@
 
 import UIKit
 
+extension Double {
+    func roundTo(_ numDecimalPlaces: Int) -> Double {
+        let roundingFactor: Double = pow(10, Double(numDecimalPlaces))
+        return (self*roundingFactor).rounded()/roundingFactor
+    }
+}
+
+extension Float {
+    func roundTo(_ numDecimalPlaces: Int) -> Float {
+        let roundingFactor: Float = pow(10, Float(numDecimalPlaces))
+        return (self*roundingFactor).rounded()/roundingFactor
+    }
+}
+
 extension String {
     func hexToUIColor() -> UIColor? {
         guard self.characters.count == 6 || self.characters.count == 7 else {

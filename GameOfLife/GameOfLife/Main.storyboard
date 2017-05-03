@@ -22,7 +22,7 @@
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                     </tabBar>
                     <connections>
-                        <segue destination="Z82-TF-lRc" kind="relationship" relationship="viewControllers" id="5OD-Dq-3Wg"/>
+                        <segue destination="5bW-H4-b33" kind="relationship" relationship="viewControllers" id="5OD-Dq-3Wg"/>
                         <segue destination="A0Y-bq-k4t" kind="relationship" relationship="viewControllers" id="Emu-JO-Swb"/>
                         <segue destination="5dR-Uc-gf4" kind="relationship" relationship="viewControllers" id="YrK-aR-Y4b"/>
                     </connections>
@@ -306,7 +306,7 @@
             </objects>
             <point key="canvasLocation" x="1604" y="416.94152923538235"/>
         </scene>
-        <!--Instrumentation-->
+        <!--Instrumentation View Controller-->
         <scene sceneID="puT-XK-h8Z">
             <objects>
                 <viewController storyboardIdentifier="InstrumentationViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Z82-TF-lRc" customClass="InstrumentationViewController" customModule="GameOfLife" customModuleProvider="target" sceneMemberID="viewController">
@@ -635,7 +635,7 @@
                             <constraint firstItem="Ni0-pS-f7y" firstAttribute="top" secondItem="RYb-Pt-oRh" secondAttribute="bottom" id="nK3-dw-cMe"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Instrumentation" image="instrumentationTabIcon" selectedImage="instrumentationTabIcon" id="eNX-Py-uOS"/>
+                    <navigationItem key="navigationItem" id="Ln6-fS-ARx"/>
                     <connections>
                         <outlet property="colLabel" destination="jRS-76-Uyc" id="S8y-0y-2Ox"/>
                         <outlet property="colStepper" destination="jno-qP-7AI" id="y36-ix-jXH"/>
@@ -657,7 +657,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="f2A-Zx-igO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1603.4482758620691" y="-368.80000000000001"/>
+            <point key="canvasLocation" x="2541.5999999999999" y="-369.26536731634184"/>
         </scene>
         <!--Grid Editor View Controller-->
         <scene sceneID="BbN-XJ-Cd5">
@@ -712,10 +712,19 @@
                                             <action selector="stepButtonPressed:" destination="A0Y-bq-k4t" eventType="touchUpInside" id="KHF-eP-LSC"/>
                                         </connections>
                                     </button>
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="O3p-JN-pD1">
+                                        <rect key="frame" x="166" y="302" width="44" height="44"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="44" id="C8K-vu-TsR"/>
+                                            <constraint firstAttribute="width" secondItem="O3p-JN-pD1" secondAttribute="height" multiplier="1:1" id="tE3-OH-DKw"/>
+                                        </constraints>
+                                        <color key="color" red="0.90980392156862744" green="0.88627450980392153" blue="0.53333333333333333" alpha="1" colorSpace="calibratedRGB"/>
+                                    </activityIndicatorView>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="hgq-Yv-zgc" firstAttribute="top" relation="greaterThanOrEqual" secondItem="oK9-S0-bqE" secondAttribute="top" id="2mr-l3-cc5"/>
+                                    <constraint firstItem="O3p-JN-pD1" firstAttribute="centerY" secondItem="oK9-S0-bqE" secondAttribute="centerY" id="FiA-8A-S7l"/>
                                     <constraint firstItem="9Fm-fw-ida" firstAttribute="trailing" secondItem="hgq-Yv-zgc" secondAttribute="trailing" constant="-24" id="Gi9-Me-trJ"/>
                                     <constraint firstItem="hgq-Yv-zgc" firstAttribute="leading" secondItem="oK9-S0-bqE" secondAttribute="leading" priority="750" id="GxS-UE-PM0"/>
                                     <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="9Fm-fw-ida" secondAttribute="bottom" constant="12" id="KeQ-5r-OCm"/>
@@ -723,6 +732,7 @@
                                     <constraint firstItem="hgq-Yv-zgc" firstAttribute="centerY" secondItem="oK9-S0-bqE" secondAttribute="centerY" id="Qqg-5l-nQ7"/>
                                     <constraint firstItem="9Fm-fw-ida" firstAttribute="top" secondItem="hgq-Yv-zgc" secondAttribute="bottom" constant="12" id="clR-6h-uJY"/>
                                     <constraint firstItem="hgq-Yv-zgc" firstAttribute="centerX" secondItem="oK9-S0-bqE" secondAttribute="centerX" id="jhJ-XC-T2c"/>
+                                    <constraint firstItem="O3p-JN-pD1" firstAttribute="centerX" secondItem="oK9-S0-bqE" secondAttribute="centerX" id="yBc-XL-BhE"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -736,12 +746,13 @@
                     </view>
                     <connections>
                         <outlet property="gridView" destination="hgq-Yv-zgc" id="wTS-Vl-Ptb"/>
+                        <outlet property="loadingActivityIndicator" destination="O3p-JN-pD1" id="W4t-iL-Uzv"/>
                         <outlet property="saveButton" destination="9Fm-fw-ida" id="TOk-u2-bqa"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6lS-W0-geO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2564" y="-735"/>
+            <point key="canvasLocation" x="3503.1999999999998" y="-735.38230884557731"/>
         </scene>
         <!--Configurations Table View Controller-->
         <scene sceneID="Byy-UH-5im">
@@ -789,7 +800,26 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Dk5-Zd-mof" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2421" y="-234"/>
+            <point key="canvasLocation" x="3359.1999999999998" y="-234.78260869565219"/>
+        </scene>
+        <!--Instrumentation-->
+        <scene sceneID="rMD-MK-kLW">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="5bW-H4-b33" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Instrumentation" image="instrumentationTabIcon" selectedImage="instrumentationTabIcon" id="eNX-Py-uOS"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="UrV-7K-vJP">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Z82-TF-lRc" kind="relationship" relationship="rootViewController" id="6nv-ex-wX5"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="oYI-8w-u4z" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1602.4000000000001" y="-369.26536731634184"/>
         </scene>
     </scenes>
     <resources>

@@ -35,7 +35,17 @@ class InstrumentationViewController: UIViewController, StoryboardIdentifiable {
         super.viewDidLoad()
         setupUI()
     }
-    
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(true, animated: animated)
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        navigationController?.setNavigationBarHidden(false, animated: animated)
+        super.viewWillDisappear(animated)
+    }
+
     func setupUI() {
         refreshRateKeyImageView.image = #imageLiteral(resourceName: "keyIcon").withRenderingMode(.alwaysTemplate)
         refreshRateKeyImageView.tintColor = Constants.Colors.appRedColor
@@ -43,6 +53,9 @@ class InstrumentationViewController: UIViewController, StoryboardIdentifiable {
         
         rowTextField.text = "\(rowStepper.value)"
         colTextField.text = "\(colStepper.value)"
+
+        // Shown in navigation controller's automatic "back" handling
+        navigationItem.title = "Instrumentation"
     }
     
     func updateGridSize() {
@@ -108,7 +121,7 @@ class InstrumentationViewController: UIViewController, StoryboardIdentifiable {
 
     @IBAction func refreshRateSliderSlid(_ sender: Any) {
         refreshRateTextField.text = "\((refreshRateSlider.value*100).rounded()/100)"
-        StandardEngine.engine.refreshRate = 1/(Double(refreshRateTextField.text ?? "\((refreshRateSlider.value*100).rounded()/100)") ?? (Double((refreshRateSlider.value*100).rounded())/100))
+        StandardEngine.engine.refreshRate = 1/(Double(refreshRateTextField.text ?? "\(refreshRateSlider.value.roundTo(2))") ?? (Double(refreshRateSlider.value.roundTo(2))))
     }
     
     @IBAction func timedRefreshSwitchSwitched(_ sender: Any) {

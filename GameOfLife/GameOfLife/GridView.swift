@@ -53,7 +53,8 @@ class GridView: UIView {
          EX: ?? = 2 / (40 / 10) == 0.5 (new line width)
          */
         get {
-            return (CGFloat(2.0) / (CGFloat(StandardEngine.engine.rows) / CGFloat(10)))
+            let engineRows = self.origin == .simulation ? StandardEngine.engine.rows : GridEditorEngine.engine.grid.size.rows
+            return (Constants.Defaults.defaultGridLineWidth / (CGFloat(engineRows) / CGFloat(Constants.Defaults.defaultRowCount)))
         }
     }
     
@@ -63,7 +64,7 @@ class GridView: UIView {
             case .simulation:
                 return StandardEngine.engine.grid
             case .instrumentation:
-                return StandardEngine.engine.grid // make GridEditorEngine (to handle saves/reloads/movies)
+                return GridEditorEngine.engine.grid
             }
 
         }
