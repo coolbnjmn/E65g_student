@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Configuration {
+class Configuration: Equatable {
     var title: String
     var contents: [[Int]]
     
@@ -18,6 +18,26 @@ class Configuration {
     }
 }
 
+func ==(lhs: Configuration, rhs: Configuration) -> Bool {
+    guard lhs.contents.count == rhs.contents.count else {
+        return false
+    }
+    
+    for (index, lhsPosition) in lhs.contents.enumerated() {
+        let rhsPosition = rhs.contents[index]
+        if (rhsPosition.count != 2 || lhsPosition.count != 2) {
+            return false
+        }
+        
+        if (rhsPosition[0] != lhsPosition[0] || rhsPosition[1] != lhsPosition[1]) {
+            return false
+        }
+    }
+    
+    return true
+}
+
+// MARK: - JSON Helper methods
 extension Configuration {
     static func decodeJsonIntoConfigurations(_ json: Any?, _ completion: (([Configuration]) -> Void)) {
         guard let jsonArray = json as? NSArray else {
@@ -37,9 +57,30 @@ extension Configuration {
         
         completion(configurationArray)
     }
+    
+    static func encodeConfigurationToJSON(_ configuration: Configuration, _ completion: (([String: AnyObject]) -> Void)) {
+        var resultDictionary = [String: AnyObject]()
+        
+        resultDictionary["title"] = configuration.title as AnyObject
+        resultDictionary["contents"] = configuration.contents as AnyObject
+        completion(resultDictionary)
+    }
 }
 
+// MARK: - Grid Helper methods
 extension Configuration {
+    public static func generateContentsFromGrid(_ grid: Grid) -> [[Int]] {
+        let gridIterator = grid.makeIterator()
+        let aliveCells = gridIterator.alive
+
+        let contentsArray: [[Int]] = aliveCells.map {
+            position in
+            return [position.row, position.col]
+        }
+        
+        return contentsArray
+    }
+    
     public func generateGridWithContents(_ completion: @escaping (Grid?)->Void) {
         guard contents.count > 0 else {
             assertionFailure("Configuration isn't properly set up for grid retrieval. Empty grid coming!")

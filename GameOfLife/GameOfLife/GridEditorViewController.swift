@@ -59,7 +59,16 @@ class GridEditorViewController: UIViewController, StoryboardIdentifiable {
     }
 
     @IBAction func saveButtonPressed(_ sender: Any) {
+        guard let grid = GridEditorEngine.engine.grid as? Grid,
+            let gridConfiguration = gridConfiguration else {
+            return
+        }
         
+        DispatchQueue.global(qos: .background).async {
+            let contents = Configuration.generateContentsFromGrid(grid)
+            let possibleNewConfiguration = Configuration(gridConfiguration.title, withContents: contents)
+            UserDefaults.checkConfigurationIsSavableAndSave(UserDefaults.standard, possibleNewConfiguration, fromViewController: self)
+        }
     }
 
     func startLoadIndicator() {

@@ -12,9 +12,15 @@ public struct Constants {
 
     public struct Strings {
         static let gridChangeNotification: String = "Grid Changed Notification"
+        static let configurationExistsAlertTitle: String = "Replace existing?"
+        static let configurationExistsAlertMessage: String = "Configuration exists with same name"
+        static let displayContentsExistsOverrideAlertMessage: String = "Configuration exists with same contents"
+        static let configurationExistsReplaceConfirmButtonTitle: String = "Replace"
+        static let configurationExistsReplaceCancelButtonTitle: String = "Cancel"
     }
     
     public struct Defaults {
+        static let defaultConfigurationsUserDefaultsKey: String = "defaults.configurations"
         static let defaultColCount: Int = 10
         static let defaultRowCount: Int = 10
         static let defaultDataURL: String = "https://dl.dropboxusercontent.com/u/7544475/S65g.json"
