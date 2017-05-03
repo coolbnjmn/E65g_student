@@ -9,11 +9,11 @@
 import UIKit
 
 protocol StoryboardIdentifiable {
-    var storyboardIdentifier: String { get }
+    static var storyboardIdentifier: String { get }
 }
 
 extension StoryboardIdentifiable {
-    var storyboardIdentifier: String {
+    static var storyboardIdentifier: String {
         return String(describing: type(of: self))
     }
 }

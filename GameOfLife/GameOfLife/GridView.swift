@@ -11,12 +11,29 @@ protocol GridViewDelegate {
     func cellStateChanged(_ position: (Int, Int), newState: CellState)
 }
 
+enum GridViewOrigin {
+    case instrumentation
+    case simulation
+}
+
 class GridView: UIView {
     var delegate: GridViewDelegate?
-    
+
+    // change to instrumentation for GridEditor case. Default is simulation grid.
+    var origin: GridViewOrigin = .simulation {
+        didSet {
+            self.setNeedsDisplay()
+        }
+    }
+
     @IBInspectable var size: Int {
         get {
-            return StandardEngine.engine.rows
+            switch self.origin {
+            case .simulation:
+                return StandardEngine.engine.rows
+            case .instrumentation:
+                return self.grid.size.rows
+            }
         }
         set {
             self.setNeedsDisplay()
@@ -42,7 +59,13 @@ class GridView: UIView {
     
     var grid: GridProtocol {
         get {
-            return StandardEngine.engine.grid
+            switch origin {
+            case .simulation:
+                return StandardEngine.engine.grid
+            case .instrumentation:
+                return StandardEngine.engine.grid // make GridEditorEngine (to handle saves/reloads/movies)
+            }
+
         }
         set {
             StandardEngine.engine.delegate?.engineDidUpdate(withGrid: self.grid)

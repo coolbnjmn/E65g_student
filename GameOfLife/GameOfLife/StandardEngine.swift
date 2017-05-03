@@ -41,7 +41,7 @@ class StandardEngine: EngineProtocol {
     }
     
     // For now always maintain square grid, as mentioned in Canvas discussion
-    var rows: Int = 10 {
+    var rows: Int = Constants.Defaults.defaultRowCount {
         didSet {
             if rows != oldValue {
                 cols = rows
@@ -49,7 +49,7 @@ class StandardEngine: EngineProtocol {
             }
         }
     }
-    var cols: Int = 10 {
+    var cols: Int = Constants.Defaults.defaultColCount {
         didSet {
             if cols != rows {
                 rows = cols
@@ -59,8 +59,8 @@ class StandardEngine: EngineProtocol {
     
     required init() {
         grid = Grid(self.rows, self.cols) { row, col in .empty }
-        rows = 10
-        cols = 10
+        rows = Constants.Defaults.defaultRowCount
+        cols = Constants.Defaults.defaultColCount
     }
 
     func step() -> GridProtocol {

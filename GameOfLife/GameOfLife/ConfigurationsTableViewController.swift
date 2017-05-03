@@ -24,12 +24,15 @@ class ConfigurationsTableViewController: UIViewController {
 extension ConfigurationsTableViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        var configurationOptional: Configuration? = configurationsDataSource.configurationForIndexPath(indexPath)
+        let configurationOptional: Configuration? = configurationsDataSource.configurationForIndexPath(indexPath)
         guard let configuration = configurationOptional else {
             assertionFailure("No configuration for tapped row, this should never occur.")
             return
         }
 
-        let grid = configuration.generateGridWithContents()
+        GridEditorEngine.engine.grid = configuration.generateGridWithContents()
+        let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let gridEditorViewController = mainStoryboard.instantiateViewController(withIdentifier: GridEditorViewController.storyboardIdentifier)
+        presentingViewController?.navigationController?.pushViewController(gridEditorViewController, animated: true)
     }
 }

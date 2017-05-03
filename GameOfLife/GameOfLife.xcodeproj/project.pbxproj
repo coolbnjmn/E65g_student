@@ -10,6 +10,7 @@
 		3F51DBD41EB9C80900E87C5E /* ConfigurationsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F51DBD31EB9C80900E87C5E /* ConfigurationsTableViewController.swift */; };
 		3F51DBD61EB9C83800E87C5E /* GridEditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F51DBD51EB9C83800E87C5E /* GridEditorViewController.swift */; };
 		3F51DBD81EB9C94D00E87C5E /* StoryboardIdentifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F51DBD71EB9C94D00E87C5E /* StoryboardIdentifiable.swift */; };
+		3F51DBDA1EB9D2B300E87C5E /* GridEditorEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F51DBD91EB9D2B300E87C5E /* GridEditorEngine.swift */; };
 		B21182A61EB78FB100282781 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B21182A51EB78FB100282781 /* Assets.xcassets */; };
 		B21182A91EB78FB100282781 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B21182A71EB78FB100282781 /* LaunchScreen.storyboard */; };
 		B21182B41EB78FB200282781 /* GameOfLifeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B21182B31EB78FB200282781 /* GameOfLifeTests.swift */; };
@@ -53,6 +54,7 @@
 		3F51DBD31EB9C80900E87C5E /* ConfigurationsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ConfigurationsTableViewController.swift; path = GameOfLife/ConfigurationsTableViewController.swift; sourceTree = SOURCE_ROOT; };
 		3F51DBD51EB9C83800E87C5E /* GridEditorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GridEditorViewController.swift; path = GameOfLife/GridEditorViewController.swift; sourceTree = SOURCE_ROOT; };
 		3F51DBD71EB9C94D00E87C5E /* StoryboardIdentifiable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoryboardIdentifiable.swift; sourceTree = "<group>"; };
+		3F51DBD91EB9D2B300E87C5E /* GridEditorEngine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GridEditorEngine.swift; sourceTree = "<group>"; };
 		B211829B1EB78FB100282781 /* GameOfLife.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GameOfLife.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B21182A51EB78FB100282781 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B21182A81EB78FB100282781 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -131,6 +133,7 @@
 			children = (
 				B21182DB1EB791B200282781 /* ViewController */,
 				B21182E21EB791B200282781 /* Grid.swift */,
+				3F51DBD91EB9D2B300E87C5E /* GridEditorEngine.swift */,
 				B21182E31EB791B200282781 /* EngineDelegate.swift */,
 				B21182E41EB791B200282781 /* EngineProtocol.swift */,
 				3F51DBD71EB9C94D00E87C5E /* StoryboardIdentifiable.swift */,
@@ -333,6 +336,7 @@
 				B21182FF1EB791B200282781 /* EngineProtocol.swift in Sources */,
 				B2DE98A61EB7A6E500885A76 /* ConfigurationsDataSource.swift in Sources */,
 				B2DE98A21EB7A54300885A76 /* NetworkFetcher.swift in Sources */,
+				3F51DBDA1EB9D2B300E87C5E /* GridEditorEngine.swift in Sources */,
 				3F51DBD81EB9C94D00E87C5E /* StoryboardIdentifiable.swift in Sources */,
 				B21183001EB791B200282781 /* GridView.swift in Sources */,
 				3F51DBD61EB9C83800E87C5E /* GridEditorViewController.swift in Sources */,
