@@ -8,8 +8,7 @@
 
 import UIKit
 
-class StatisticsViewController: UIViewController {
-    static let storyboardID: String = "StatisticsViewController"
+class StatisticsViewController: UIViewController, StoryboardIdentifiable {
 
     @IBOutlet weak var aliveLabel: UILabel!
     @IBOutlet weak var aliveCountLabel: UILabel!

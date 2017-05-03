@@ -8,8 +8,7 @@
 
 import UIKit
 
-class InstrumentationViewController: UIViewController {
-    static let storyboardID: String = "InstrumentationViewController"
+class InstrumentationViewController: UIViewController, StoryboardIdentifiable {
 
     @IBOutlet weak var rowLabel: UILabel!
     @IBOutlet weak var rowTextField: UITextField!

@@ -8,8 +8,7 @@
 
 import UIKit
 
-class SimulationViewController: UIViewController {
-    static let storyboardID: String = "SimulationViewController"
+class SimulationViewController: UIViewController, StoryboardIdentifiable {
 
     @IBOutlet weak var gridView: GridView!
     @IBOutlet weak var stepButton: UIButton!

@@ -26,11 +26,15 @@ class NetworkManager {
                 message == nil else {
                 let defaultMessage = "no json or message"
                 print("no json, message: \(message ?? defaultMessage)")
-                completion(false, nil)
+                    DispatchQueue.main.async {
+                        completion(false, nil)
+                    }
                 return
             }
-            
-            completion(true, json)
+
+            DispatchQueue.main.async {
+                completion(true, json)
+            }
         }
     }
 }

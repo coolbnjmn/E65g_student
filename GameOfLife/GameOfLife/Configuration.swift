@@ -38,3 +38,43 @@ extension Configuration {
         completion(configurationArray)
     }
 }
+
+extension Configuration {
+    public func generateGridWithContents() -> Grid {
+        guard contents.count > 0 else {
+            assertionFailure("Configuration isn't properly set up for grid retrieval. Empty grid coming!")
+            return Grid(Constants.Defaults.defaultRowCount, Constants.Defaults.defaultColCount)
+        }
+
+        let startPositionsOptional: [GridPosition?] = contents.map {
+            startPosition in
+            // startPosition, from JSON format given, is a 2 element array with [row, col] format.
+            guard startPosition.count == 2 else {
+                return nil
+            }
+            return GridPosition(row: startPosition[0], col: startPosition[1])
+        }
+
+        var startPositions = [GridPosition]()
+        startPositionsOptional.forEach {
+            optionalPosition in
+            if let position = optionalPosition {
+                startPositions.append(position)
+            }
+        }
+
+        let size = startPositions.count
+        let grid = Grid(size, size, cellInitializer: {
+            position in
+            if startPositions.contains(where: {
+                row, col in
+                return row == position.row && col == position.col
+            }) {
+                return .alive
+            } else {
+                return .empty
+            }
+        })
+        return grid
+    }
+}

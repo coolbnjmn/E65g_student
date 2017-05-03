@@ -26,6 +26,15 @@ class ConfigurationsDataSource: NSObject {
             }
         }
     }
+
+    public func configurationForIndexPath(_ indexPath: IndexPath) -> Configuration? {
+        guard (configurations?.count ?? 0) > indexPath.row,
+            let configuration: Configuration = configurations?[indexPath.row] else {
+                assertionFailure("error, no configuration for this requested index path")
+                return nil
+        }
+        return configuration
+    }
 }
 
 extension ConfigurationsDataSource: UITableViewDataSource {

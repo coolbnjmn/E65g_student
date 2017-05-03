@@ -659,6 +659,90 @@
             </objects>
             <point key="canvasLocation" x="1603.4482758620691" y="-368.80000000000001"/>
         </scene>
+        <!--Grid Editor View Controller-->
+        <scene sceneID="BbN-XJ-Cd5">
+            <objects>
+                <viewController storyboardIdentifier="GridEditorViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="CWn-Qe-2Ga" customClass="GridEditorViewController" customModule="GameOfLife" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="yHt-yC-8PO"/>
+                        <viewControllerLayoutGuide type="bottom" id="feP-7H-mCW"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="DGT-On-Mw4">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oK9-S0-bqE" userLabel="Content View">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hgq-Yv-zgc" customClass="GridView" customModule="GameOfLife" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="136" width="375" height="375"/>
+                                        <color key="backgroundColor" red="1" green="0.51372549020000002" blue="0.37647058820000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="hgq-Yv-zgc" secondAttribute="height" multiplier="1:1" id="3e5-aM-ScY"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="gridColor">
+                                                <color key="value" cocoaTouchSystemColor="darkTextColor"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="livingColor">
+                                                <color key="value" red="0.1764705882" green="0.78039215689999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="emptyColor">
+                                                <color key="value" red="0.90980392160000001" green="0.8862745098" blue="0.53333333329999999" alpha="1" colorSpace="calibratedRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="bornColor">
+                                                <color key="value" red="0.1764705882" green="0.78039215689999997" blue="1" alpha="0.90000000000000002" colorSpace="calibratedRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="diedColor">
+                                                <color key="value" red="0.90980392160000001" green="0.8862745098" blue="0.53333333329999999" alpha="0.90000000000000002" colorSpace="calibratedRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Fm-fw-ida">
+                                        <rect key="frame" x="305" y="523" width="46" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="pBz-Zb-7l4"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="20"/>
+                                        <state key="normal" title="Save">
+                                            <color key="titleColor" red="0.90980392160000001" green="0.8862745098" blue="0.53333333329999999" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="saveButtonPressed:" destination="CWn-Qe-2Ga" eventType="touchUpInside" id="7eE-8V-kgY"/>
+                                            <action selector="stepButtonPressed:" destination="A0Y-bq-k4t" eventType="touchUpInside" id="KHF-eP-LSC"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="hgq-Yv-zgc" firstAttribute="top" relation="greaterThanOrEqual" secondItem="oK9-S0-bqE" secondAttribute="top" id="2mr-l3-cc5"/>
+                                    <constraint firstItem="9Fm-fw-ida" firstAttribute="trailing" secondItem="hgq-Yv-zgc" secondAttribute="trailing" constant="-24" id="Gi9-Me-trJ"/>
+                                    <constraint firstItem="hgq-Yv-zgc" firstAttribute="leading" secondItem="oK9-S0-bqE" secondAttribute="leading" priority="750" id="GxS-UE-PM0"/>
+                                    <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="9Fm-fw-ida" secondAttribute="bottom" constant="12" id="KeQ-5r-OCm"/>
+                                    <constraint firstAttribute="trailing" secondItem="hgq-Yv-zgc" secondAttribute="trailing" priority="750" id="PhJ-TZ-0sd"/>
+                                    <constraint firstItem="hgq-Yv-zgc" firstAttribute="centerY" secondItem="oK9-S0-bqE" secondAttribute="centerY" id="Qqg-5l-nQ7"/>
+                                    <constraint firstItem="9Fm-fw-ida" firstAttribute="top" secondItem="hgq-Yv-zgc" secondAttribute="bottom" constant="12" id="clR-6h-uJY"/>
+                                    <constraint firstItem="hgq-Yv-zgc" firstAttribute="centerX" secondItem="oK9-S0-bqE" secondAttribute="centerX" id="jhJ-XC-T2c"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="0.51372549019607838" blue="0.37647058823529411" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="feP-7H-mCW" firstAttribute="top" secondItem="oK9-S0-bqE" secondAttribute="bottom" id="Xua-FL-jng"/>
+                            <constraint firstItem="oK9-S0-bqE" firstAttribute="leading" secondItem="DGT-On-Mw4" secondAttribute="leading" id="cn3-kU-bO7"/>
+                            <constraint firstItem="oK9-S0-bqE" firstAttribute="top" secondItem="yHt-yC-8PO" secondAttribute="bottom" id="q8K-Yo-900"/>
+                            <constraint firstAttribute="trailing" secondItem="oK9-S0-bqE" secondAttribute="trailing" id="tpz-qa-Rds"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="gridView" destination="hgq-Yv-zgc" id="wTS-Vl-Ptb"/>
+                        <outlet property="saveButton" destination="9Fm-fw-ida" id="TOk-u2-bqa"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6lS-W0-geO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2564" y="-735"/>
+        </scene>
         <!--Configurations Table View Controller-->
         <scene sceneID="Byy-UH-5im">
             <objects>
@@ -679,7 +763,7 @@
                                         <rect key="frame" x="0.0" y="28" width="343" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="lVy-TV-c4f" id="vrN-Z4-06k">
-                                            <rect key="frame" x="0.0" y="0.0" width="343" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="343" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </tableViewCellContentView>
