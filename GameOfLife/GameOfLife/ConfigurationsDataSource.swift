@@ -18,12 +18,19 @@ class ConfigurationsDataSource: NSObject {
             if success {
                 Configuration.decodeJsonIntoConfigurations(json) {
                     configurationArray in
-                    self.configurations = configurationArray
-                    tableView.reloadData()
+                    configurationArray.forEach {
+                        configuration in
+                        UserDefaults.checkConfigurationIsSavableAndSave(UserDefaults.standard, configuration, fromViewController: nil)
+                    }
                 }
             } else {
                 self.configurations = nil
             }
+        }
+        UserDefaults.getAllConfigurations {
+            configurations in
+            self.configurations = configurations
+            tableView.reloadData()
         }
     }
 

@@ -10,8 +10,8 @@ import UIKit
 
 extension UserDefaults {
     // Configuration extension
-    static func checkConfigurationIsSavableAndSave(_ defaults: UserDefaults, _ newConfiguration: Configuration, fromViewController: UIViewController) {
-        guard let currentConfigurations: [String: Any] = defaults.dictionary(forKey: Constants.Defaults.defaultConfigurationsUserDefaultsKey) else {
+    static func checkConfigurationIsSavableAndSave(_ defaults: UserDefaults, _ newConfiguration: Configuration, fromViewController: UIViewController?) {
+        guard let currentConfigurations: [String: [String: AnyObject]] = defaults.value(forKey: Constants.Defaults.defaultConfigurationsUserDefaultsKey) as? [String: [String: AnyObject]] else {
                 // no existing user defaults
                 UserDefaults.saveConfigurationTo(defaults, configuration: newConfiguration)
                 return
@@ -23,7 +23,7 @@ extension UserDefaults {
             return configurationTitle == newConfiguration.title
         }
         
-        if filteredNames.count > 0 {
+        if filteredNames.count > 0, let fromViewController = fromViewController {
             // show alert that Configuration alraedy exists, need to pick a new name
             let replaceConfigurationHandler: ()->Void = {
                 UserDefaults.saveConfigurationTo(defaults, configuration: newConfiguration, currentConfigurations: currentConfigurations)
@@ -32,20 +32,23 @@ extension UserDefaults {
             return
         }
         
-        guard let existingConfigurations: [[[Int]]] = Array(currentConfigurations.values) as? [[[Int]]] else {
-            assertionFailure("issue parsing current configurations to determine duplicates")
-            return
-        }
-        
+        let existingConfigurations: [[String: AnyObject]] = Array(currentConfigurations.values)
         let filteredConfigurations = existingConfigurations.filter {
-            configurationContents in
+            (configuration: [String: AnyObject]) in
             // use placeholder "title" because `Configuration` class == only checks contents
-            return Configuration("title", withContents: configurationContents) == newConfiguration
+            guard let title = configuration["title"] as? String,
+                let contents = configuration["contents"] as? [[Int]] else {
+                    return false
+            }
+            return Configuration(title, withContents: contents) == newConfiguration
         }
         
-        if filteredConfigurations.count > 0 {
+        if filteredConfigurations.count > 0, let fromViewController = fromViewController {
             // show alert that Configuration will override existing, different-name-but-same-content configuration
-            
+            let replaceConfigurationHandler: ()->Void = {
+                UserDefaults.saveConfigurationTo(defaults, configuration: newConfiguration, currentConfigurations: currentConfigurations)
+            }
+            ConfigurationsSaveAlertController.displayNameExistsAlert(presentingViewController: fromViewController, completion: replaceConfigurationHandler)
             return
         }
         
@@ -63,5 +66,32 @@ extension UserDefaults {
             newConfigurations[title] = anyDictionary
             defaults.set(newConfigurations, forKey: Constants.Defaults.defaultConfigurationsUserDefaultsKey)
         })
+    }
+    
+    static func getAllConfigurations(_ defaults: UserDefaults = UserDefaults.standard, _ completion: (([Configuration]) -> Void)) {
+        if let rawConfigurationsDefaults = defaults.value(forKey: Constants.Defaults.defaultConfigurationsUserDefaultsKey) as? [String: [String: AnyObject]] {
+            let allKeys = Array(rawConfigurationsDefaults.keys)
+            let configurationOptionals: [Configuration?] = allKeys.map {
+                configurationTitle in
+                guard let configurationDictionary = rawConfigurationsDefaults[configurationTitle],
+                        let contents = configurationDictionary["contents"] as? [[Int]] else {
+                    return nil
+                }
+                
+                return Configuration(configurationTitle, withContents: contents)
+            }
+            var configurations = [Configuration]()
+            configurationOptionals.forEach {
+                configurationOptional in
+                guard let configuration = configurationOptional else {
+                    return
+                }
+                configurations.append(configuration)
+            }
+            
+            completion(configurations)
+        } else {
+            completion([])
+        }
     }
 }
