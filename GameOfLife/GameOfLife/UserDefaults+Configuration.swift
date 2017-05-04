@@ -26,7 +26,7 @@ extension UserDefaults {
         if filteredNames.count > 0, let fromViewController = fromViewController {
             // show alert that Configuration alraedy exists, need to pick a new name
             let replaceConfigurationHandler: ()->Void = {
-                UserDefaults.saveConfigurationTo(defaults, configuration: newConfiguration, currentConfigurations: currentConfigurations)
+                UserDefaults.saveConfigurationTo(defaults, configuration: newConfiguration)
             }
             ConfigurationsSaveAlertController.displayNameExistsAlert(presentingViewController: fromViewController, completion: replaceConfigurationHandler)
             return
@@ -46,26 +46,41 @@ extension UserDefaults {
         if filteredConfigurations.count > 0, let fromViewController = fromViewController {
             // show alert that Configuration will override existing, different-name-but-same-content configuration
             let replaceConfigurationHandler: ()->Void = {
-                UserDefaults.saveConfigurationTo(defaults, configuration: newConfiguration, currentConfigurations: currentConfigurations)
+                UserDefaults.saveConfigurationTo(defaults, configuration: newConfiguration)
             }
             ConfigurationsSaveAlertController.displayNameExistsAlert(presentingViewController: fromViewController, completion: replaceConfigurationHandler)
             return
         }
         
-        UserDefaults.saveConfigurationTo(defaults, configuration: newConfiguration, currentConfigurations: currentConfigurations)
+        UserDefaults.saveConfigurationTo(defaults, configuration: newConfiguration)
     }
     
-    fileprivate static func saveConfigurationTo(_ defaults: UserDefaults, configuration: Configuration, currentConfigurations: [String: Any] = [:]) {
+    fileprivate static func saveConfigurationTo(_ defaults: UserDefaults, configuration: Configuration) {
+        var currentConfigurations: [String: [String: AnyObject]]
+        if let rawConfigurations = getRawConfigurationsFrom(defaults) {
+            currentConfigurations = rawConfigurations
+        } else {
+            currentConfigurations = [String: [String: AnyObject]]()
+        }
+
         Configuration.encodeConfigurationToJSON(configuration, {
-            dictionary in
+            (dictionary: [String: AnyObject]) in
             guard let title: String = dictionary["title"] as? String else {
                 return
             }
-            let anyDictionary: AnyObject = dictionary as AnyObject
             var newConfigurations = currentConfigurations
-            newConfigurations[title] = anyDictionary
+            newConfigurations[title] = dictionary
             defaults.set(newConfigurations, forKey: Constants.Defaults.defaultConfigurationsUserDefaultsKey)
+            NotificationCenter.default.post(name: Constants.Notifications.configurationsChangeNotification, object: nil)
         })
+    }
+
+    fileprivate static func getRawConfigurationsFrom(_ defaults: UserDefaults) -> [String: [String: AnyObject]]? {
+        if let rawConfigurationDefaults = defaults.value(forKey: Constants.Defaults.defaultConfigurationsUserDefaultsKey) as? [String: [String: AnyObject]] {
+            return rawConfigurationDefaults
+        } else {
+            return nil
+        }
     }
     
     static func getAllConfigurations(_ defaults: UserDefaults = UserDefaults.standard, _ completion: (([Configuration]) -> Void)) {

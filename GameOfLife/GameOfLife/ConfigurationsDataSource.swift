@@ -10,9 +10,11 @@ import UIKit
 
 class ConfigurationsDataSource: NSObject {
     var configurations: [Configuration]? = nil
+    weak var tableView: UITableView?
     
     init(_ dataSourceUrlString: String = Constants.Defaults.defaultDataURL, tableView: UITableView) {
         super.init()
+        self.tableView = tableView
         NetworkManager.shared.fetchDataFromURL(dataSourceUrlString) {
             success, json in
             if success {
@@ -22,15 +24,25 @@ class ConfigurationsDataSource: NSObject {
                         configuration in
                         UserDefaults.checkConfigurationIsSavableAndSave(UserDefaults.standard, configuration, fromViewController: nil)
                     }
+                    self.getAllAndReloadTable()
                 }
             } else {
                 self.configurations = nil
             }
         }
+        getAllAndReloadTable()
+        NotificationCenter.default.addObserver(self, selector: #selector(ConfigurationsDataSource.configurationsDidUpdate), name: Constants.Notifications.configurationsChangeNotification, object: nil)
+    }
+
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
+
+    fileprivate func getAllAndReloadTable() {
         UserDefaults.getAllConfigurations {
             configurations in
             self.configurations = configurations
-            tableView.reloadData()
+            self.tableView?.reloadData()
         }
     }
 
@@ -41,6 +53,10 @@ class ConfigurationsDataSource: NSObject {
                 return nil
         }
         return configuration
+    }
+
+    func configurationsDidUpdate() {
+        getAllAndReloadTable()
     }
 }
 

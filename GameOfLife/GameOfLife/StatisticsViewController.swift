@@ -25,7 +25,7 @@ class StatisticsViewController: UIViewController, StoryboardIdentifiable {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        NotificationCenter.default.addObserver(self, selector: #selector(StatisticsViewController.engineDidUpdate(_:)), name: NSNotification.Name(rawValue: Constants.Strings.gridChangeNotification), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(StatisticsViewController.engineDidUpdate(_:)), name: Constants.Notifications.gridChangeNotification, object: nil)
         
         aliveLabel.text = "# Cells that are alive:"
         deadLabel.text = "# Cells that are dead:"

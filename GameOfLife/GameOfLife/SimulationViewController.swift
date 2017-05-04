@@ -43,7 +43,6 @@ extension SimulationViewController: GridViewDelegate {
 extension SimulationViewController: EngineDelegate {
     func engineDidUpdate(withGrid gridFromEngine: GridProtocol) {
         gridView.setNeedsDisplay()
-        let gridNotification: NSNotification.Name = NSNotification.Name(rawValue: Constants.Strings.gridChangeNotification)
-        NotificationCenter.default.post(Notification(name: gridNotification, object: nil, userInfo: ["grid": gridView.grid]))
+        NotificationCenter.default.post(Notification(name: Constants.Notifications.gridChangeNotification, object: nil, userInfo: ["grid": gridView.grid]))
     }
 }

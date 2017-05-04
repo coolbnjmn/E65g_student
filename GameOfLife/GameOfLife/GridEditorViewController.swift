@@ -97,7 +97,5 @@ extension GridEditorViewController: EngineDelegate {
     func engineDidUpdate(withGrid gridFromEngine: GridProtocol) {
         gridView.setNeedsDisplay()
         // grid editor doesn't send stats to Statistics view, only Simulation does.
-        // let gridNotification: NSNotification.Name = NSNotification.Name(rawValue: Constants.Strings.gridChangeNotification)
-        // NotificationCenter.default.post(Notification(name: gridNotification, object: nil, userInfo: ["grid": gridView.grid]))
     }
 }
