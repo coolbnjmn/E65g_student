@@ -18,6 +18,7 @@ class GridEditorViewController: UIViewController, StoryboardIdentifiable {
 
     private(set) var gridLoaded: Bool = false
 
+    @IBOutlet weak var gridNameTextField: UITextField!
     @IBOutlet weak var gridView: GridView!
     @IBOutlet weak var saveButton: UIButton!
     @IBOutlet weak var loadingActivityIndicator: UIActivityIndicatorView!
@@ -35,11 +36,18 @@ class GridEditorViewController: UIViewController, StoryboardIdentifiable {
                     let strongSelf = self else {
                     return
                 }
-
-                GridEditorEngine.engine.grid = grid
-                strongSelf.gridLoaded = true
+                
+                DispatchQueue.main.async {
+                    strongSelf.gridLoaded = true
+                    GridEditorEngine.engine.grid = grid
+                }
             }
+            gridNameTextField.text = gridConfiguration.title
+        } else {
+            gridLoaded = true
+            GridEditorEngine.engine.grid = Grid(StandardEngine.engine.rows, StandardEngine.engine.cols)
         }
+        gridNameTextField.delegate = self
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -60,13 +68,20 @@ class GridEditorViewController: UIViewController, StoryboardIdentifiable {
 
     @IBAction func saveButtonPressed(_ sender: Any) {
         guard let grid = GridEditorEngine.engine.grid as? Grid,
-            let gridConfiguration = gridConfiguration else {
+            let gridName = gridNameTextField.text else {
+            return
+        }
+        
+        if gridName.characters.count == 0 {
+            let alertController = UIAlertController(title: "Please name the grid", message: "Grid names need at least a char", preferredStyle: .alert)
+            alertController.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+            present(alertController, animated: true, completion: nil)
             return
         }
         
         DispatchQueue.global(qos: .background).async {
             let contents = Configuration.generateContentsFromGrid(grid)
-            let possibleNewConfiguration = Configuration(gridConfiguration.title, withContents: contents)
+            let possibleNewConfiguration = Configuration(gridName, withContents: contents)
             UserDefaults.checkConfigurationIsSavableAndSave(UserDefaults.standard, possibleNewConfiguration, fromViewController: self)
         }
     }
@@ -84,6 +99,12 @@ class GridEditorViewController: UIViewController, StoryboardIdentifiable {
     }
 }
 
+extension GridEditorViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+}
 
 extension GridEditorViewController: GridViewDelegate {
     func cellStateChanged(_ position: (Int, Int), newState: CellState) {

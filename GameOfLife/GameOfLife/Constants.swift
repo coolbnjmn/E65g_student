@@ -27,6 +27,7 @@ public struct Constants {
     
     public struct Defaults {
         static let defaultConfigurationsUserDefaultsKey: String = "defaults.configurations"
+        static let defaultSimulationTabConfigurationUserDefaultKey: String = "defaults.simulation_tab.configuration"
         static let defaultColCount: Int = 10
         static let defaultRowCount: Int = 10
         static let defaultDataURL: String = "https://dl.dropboxusercontent.com/u/7544475/S65g.json"

@@ -16,6 +16,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        UserDefaults.getSimulationTabConfiguration {
+            configuration in
+            
+            configuration?.generateGridWithContents {
+                gridOptional in
+                guard let grid = gridOptional else {
+                    return
+                }
+                
+                NotificationCenter.default.post(Notification(name: Constants.Notifications.configurationsChangeNotification, object: nil, userInfo: ["grid": grid]))
+            }
+        }
+        
         return true
     }
 

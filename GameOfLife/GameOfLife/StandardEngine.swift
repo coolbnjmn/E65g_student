@@ -79,7 +79,7 @@ class StandardEngine: EngineProtocol {
         return grid
     }
     
-    @objc func configurationSaved(_ notification: Notification) {
+    @objc fileprivate func configurationSaved(_ notification: Notification) {
         guard let newGrid = notification.userInfo?["grid"] as? Grid else {
             return
         }

@@ -48,7 +48,7 @@ extension UserDefaults {
             let replaceConfigurationHandler: ()->Void = {
                 UserDefaults.saveConfigurationTo(defaults, configuration: newConfiguration, fromViewController: fromViewController)
             }
-            ConfigurationsSaveAlertController.displayNameExistsAlert(presentingViewController: fromViewController, completion: replaceConfigurationHandler)
+            ConfigurationsSaveAlertController.displayContentsExistsOverrideAlert(presentingViewController: fromViewController, completion: replaceConfigurationHandler)
             return
         }
         
@@ -71,6 +71,7 @@ extension UserDefaults {
             var newConfigurations = currentConfigurations
             newConfigurations[title] = dictionary
             defaults.set(newConfigurations, forKey: Constants.Defaults.defaultConfigurationsUserDefaultsKey)
+            defaults.set(dictionary, forKey: Constants.Defaults.defaultSimulationTabConfigurationUserDefaultKey)
         })
         configuration.generateGridWithContents {
             gridOptional in
@@ -117,6 +118,16 @@ extension UserDefaults {
             completion(configurations)
         } else {
             completion([])
+        }
+    }
+    
+    static func getSimulationTabConfiguration(_ defaults: UserDefaults = UserDefaults.standard, _ completion: ((Configuration?) -> Void)) {
+        if let configurationDictionary = defaults.value(forKey: Constants.Defaults.defaultSimulationTabConfigurationUserDefaultKey) as? [String: AnyObject],
+            let title = configurationDictionary["title"] as? String,
+            let contents = configurationDictionary["contents"] as? [[Int]] {
+            completion(Configuration(title, withContents: contents))
+        } else {
+            completion(nil)
         }
     }
 }

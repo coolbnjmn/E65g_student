@@ -46,8 +46,8 @@ class InstrumentationViewController: UIViewController, StoryboardIdentifiable {
 
     func setupUI() {
         
-        rowNumberLabel.text = "\(sizeStepper.value)"
-        colNumberLabel.text = "\(sizeStepper.value)"
+        rowNumberLabel.text = "\(Int(sizeStepper.value))"
+        colNumberLabel.text = "\(Int(sizeStepper.value))"
 
         // Shown in navigation controller's automatic "back" handling
         navigationItem.title = "Instrumentation"
@@ -94,5 +94,15 @@ class InstrumentationViewController: UIViewController, StoryboardIdentifiable {
             refreshRateSlider.isEnabled = timerSwitch.isOn
         }
     }
+    
+    @IBAction func addConfigurationPressed(_ sender: Any) {
+        let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        guard let gridEditorViewController = mainStoryboard.instantiateViewController(withIdentifier: GridEditorViewController.storyboardIdentifier) as? GridEditorViewController else {
+            assertionFailure("Could not properly instantiate a grid editor view controller")
+            return
+        }
+        navigationController?.pushViewController(gridEditorViewController, animated: true)
+    }
+    
 }
 
