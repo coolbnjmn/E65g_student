@@ -58,6 +58,15 @@ extension Configuration {
         completion(configurationArray)
     }
     
+    static func decodeJsonIntoConfiguration(_ dictionary: [String: AnyObject], _ completion: ((Configuration?) -> Void)) {
+        if let configurationTitle = dictionary["title"] as? String,
+            let configurationContents = dictionary["contents"] as? [[Int]] {
+            completion(Configuration(configurationTitle, withContents: configurationContents))
+        } else {
+            completion(nil)
+        }
+    }
+    
     static func encodeConfigurationToJSON(_ configuration: Configuration, _ completion: (([String: AnyObject]) -> Void)) {
         var resultDictionary = [String: AnyObject]()
         

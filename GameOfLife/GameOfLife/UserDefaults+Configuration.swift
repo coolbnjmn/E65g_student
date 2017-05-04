@@ -71,8 +71,15 @@ extension UserDefaults {
             var newConfigurations = currentConfigurations
             newConfigurations[title] = dictionary
             defaults.set(newConfigurations, forKey: Constants.Defaults.defaultConfigurationsUserDefaultsKey)
-            NotificationCenter.default.post(name: Constants.Notifications.configurationsChangeNotification, object: nil)
         })
+        configuration.generateGridWithContents {
+            gridOptional in
+            guard let grid = gridOptional else {
+                return
+            }
+            
+            NotificationCenter.default.post(Notification(name: Constants.Notifications.configurationsChangeNotification, object: nil, userInfo: ["grid": grid]))
+        }
     }
 
     fileprivate static func getRawConfigurationsFrom(_ defaults: UserDefaults) -> [String: [String: AnyObject]]? {

@@ -38,17 +38,17 @@ class GridEditorViewController: UIViewController, StoryboardIdentifiable {
 
                 GridEditorEngine.engine.grid = grid
                 strongSelf.gridLoaded = true
-                if strongSelf.loadingActivityIndicator.isAnimating {
-                    strongSelf.stopLoadIndicator()
-                }
             }
         }
     }
 
-    override func viewDidAppear(_ animated: Bool) {
-        if !gridLoaded {
+    override func viewWillAppear(_ animated: Bool) {
+        if !gridLoaded && animated {
             startLoadIndicator()
         }
+        super.viewWillAppear(animated)
+    }
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         gridView.delegate = self
     }
@@ -68,6 +68,9 @@ class GridEditorViewController: UIViewController, StoryboardIdentifiable {
             let contents = Configuration.generateContentsFromGrid(grid)
             let possibleNewConfiguration = Configuration(gridConfiguration.title, withContents: contents)
             UserDefaults.checkConfigurationIsSavableAndSave(UserDefaults.standard, possibleNewConfiguration, fromViewController: self)
+            DispatchQueue.main.async {
+                navigationController?.popViewController(animated: true)
+            }
         }
     }
 
@@ -79,10 +82,8 @@ class GridEditorViewController: UIViewController, StoryboardIdentifiable {
 
     func stopLoadIndicator() {
         loadingActivityIndicator.stopAnimating()
-        UIView.animate(withDuration: 0.3, animations: {
-            self.gridView.alpha = 1
-            self.loadingActivityIndicator.alpha = 0
-        })
+        gridView.alpha = 1
+        loadingActivityIndicator.alpha = 0
     }
 }
 
@@ -97,5 +98,8 @@ extension GridEditorViewController: EngineDelegate {
     func engineDidUpdate(withGrid gridFromEngine: GridProtocol) {
         gridView.setNeedsDisplay()
         // grid editor doesn't send stats to Statistics view, only Simulation does.
+        if loadingActivityIndicator.isAnimating {
+            stopLoadIndicator()
+        }
     }
 }

@@ -61,6 +61,11 @@ class StandardEngine: EngineProtocol {
         grid = Grid(self.rows, self.cols) { row, col in .empty }
         rows = Constants.Defaults.defaultRowCount
         cols = Constants.Defaults.defaultColCount
+        NotificationCenter.default.addObserver(self, selector: #selector(StandardEngine.configurationSaved(_:)), name: Constants.Notifications.configurationsChangeNotification, object: nil)
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
     }
 
     func step() -> GridProtocol {
@@ -73,7 +78,17 @@ class StandardEngine: EngineProtocol {
         delegate?.engineDidUpdate(withGrid: grid)
         return grid
     }
-
+    
+    @objc func configurationSaved(_ notification: Notification) {
+        guard let newGrid = notification.userInfo?["grid"] as? Grid else {
+            return
+        }
+        
+        self.grid = newGrid
+        self.rows = newGrid.size.rows
+        delegate?.engineDidUpdate(withGrid: newGrid)
+    }
+    
     // Helpers
     func gridSizeChanged(_ oldValue: Int) {
         let newGrid = Grid(rows, cols) {
