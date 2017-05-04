@@ -12,7 +12,7 @@ class ConfigurationsTableViewController: UIViewController {
     @IBOutlet weak var configurationsTableView: UITableView!
     
     lazy var configurationsDataSource: ConfigurationsDataSource = {
-        return ConfigurationsDataSource(tableView: self.configurationsTableView) // uses default url
+        return ConfigurationsDataSource(tableView: self.configurationsTableView, viewController: self) // uses default url
     }()
  
     override func viewDidLoad() {

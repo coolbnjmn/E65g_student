@@ -12,7 +12,7 @@ class ConfigurationsDataSource: NSObject {
     var configurations: [Configuration]? = nil
     weak var tableView: UITableView?
     
-    init(_ dataSourceUrlString: String = Constants.Defaults.defaultDataURL, tableView: UITableView) {
+    init(_ dataSourceUrlString: String = Constants.Defaults.defaultDataURL, tableView: UITableView, viewController: UIViewController) {
         super.init()
         self.tableView = tableView
         NetworkManager.shared.fetchDataFromURL(dataSourceUrlString) {
@@ -22,7 +22,7 @@ class ConfigurationsDataSource: NSObject {
                     configurationArray in
                     configurationArray.forEach {
                         configuration in
-                        UserDefaults.checkConfigurationIsSavableAndSave(UserDefaults.standard, configuration, fromViewController: nil)
+                        UserDefaults.checkConfigurationIsSavableAndSave(UserDefaults.standard, configuration, fromViewController: viewController, skipChecks: true)
                     }
                     self.getAllAndReloadTable()
                 }

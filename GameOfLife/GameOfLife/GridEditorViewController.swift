@@ -68,9 +68,6 @@ class GridEditorViewController: UIViewController, StoryboardIdentifiable {
             let contents = Configuration.generateContentsFromGrid(grid)
             let possibleNewConfiguration = Configuration(gridConfiguration.title, withContents: contents)
             UserDefaults.checkConfigurationIsSavableAndSave(UserDefaults.standard, possibleNewConfiguration, fromViewController: self)
-            DispatchQueue.main.async {
-                navigationController?.popViewController(animated: true)
-            }
         }
     }
 

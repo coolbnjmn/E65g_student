@@ -10,10 +10,10 @@ import UIKit
 
 extension UserDefaults {
     // Configuration extension
-    static func checkConfigurationIsSavableAndSave(_ defaults: UserDefaults, _ newConfiguration: Configuration, fromViewController: UIViewController?) {
+    static func checkConfigurationIsSavableAndSave(_ defaults: UserDefaults, _ newConfiguration: Configuration, fromViewController: UIViewController, skipChecks: Bool = false) {
         guard let currentConfigurations: [String: [String: AnyObject]] = defaults.value(forKey: Constants.Defaults.defaultConfigurationsUserDefaultsKey) as? [String: [String: AnyObject]] else {
                 // no existing user defaults
-                UserDefaults.saveConfigurationTo(defaults, configuration: newConfiguration)
+                UserDefaults.saveConfigurationTo(defaults, configuration: newConfiguration, fromViewController: fromViewController)
                 return
         }
         let existingNames = Array(currentConfigurations.keys)
@@ -23,10 +23,10 @@ extension UserDefaults {
             return configurationTitle == newConfiguration.title
         }
         
-        if filteredNames.count > 0, let fromViewController = fromViewController {
+        if !skipChecks && filteredNames.count > 0 {
             // show alert that Configuration alraedy exists, need to pick a new name
             let replaceConfigurationHandler: ()->Void = {
-                UserDefaults.saveConfigurationTo(defaults, configuration: newConfiguration)
+                UserDefaults.saveConfigurationTo(defaults, configuration: newConfiguration, fromViewController: fromViewController)
             }
             ConfigurationsSaveAlertController.displayNameExistsAlert(presentingViewController: fromViewController, completion: replaceConfigurationHandler)
             return
@@ -43,19 +43,19 @@ extension UserDefaults {
             return Configuration(title, withContents: contents) == newConfiguration
         }
         
-        if filteredConfigurations.count > 0, let fromViewController = fromViewController {
+        if !skipChecks && filteredConfigurations.count > 0 {
             // show alert that Configuration will override existing, different-name-but-same-content configuration
             let replaceConfigurationHandler: ()->Void = {
-                UserDefaults.saveConfigurationTo(defaults, configuration: newConfiguration)
+                UserDefaults.saveConfigurationTo(defaults, configuration: newConfiguration, fromViewController: fromViewController)
             }
             ConfigurationsSaveAlertController.displayNameExistsAlert(presentingViewController: fromViewController, completion: replaceConfigurationHandler)
             return
         }
         
-        UserDefaults.saveConfigurationTo(defaults, configuration: newConfiguration)
+        UserDefaults.saveConfigurationTo(defaults, configuration: newConfiguration, fromViewController: fromViewController)
     }
     
-    fileprivate static func saveConfigurationTo(_ defaults: UserDefaults, configuration: Configuration) {
+    fileprivate static func saveConfigurationTo(_ defaults: UserDefaults, configuration: Configuration, fromViewController: UIViewController) {
         var currentConfigurations: [String: [String: AnyObject]]
         if let rawConfigurations = getRawConfigurationsFrom(defaults) {
             currentConfigurations = rawConfigurations
@@ -79,6 +79,9 @@ extension UserDefaults {
             }
             
             NotificationCenter.default.post(Notification(name: Constants.Notifications.configurationsChangeNotification, object: nil, userInfo: ["grid": grid]))
+            DispatchQueue.main.async {
+                fromViewController.navigationController?.popViewController(animated: true)
+            }
         }
     }
 
