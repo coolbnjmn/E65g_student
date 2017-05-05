@@ -79,6 +79,13 @@ class GridEditorViewController: UIViewController, StoryboardIdentifiable {
             return
         }
         
+        if grid.makeIterator().alive.count == 0 {
+            let alertController = UIAlertController(title: "Please add live cells to the grid", message: "Saved grids need one alive cell", preferredStyle: .alert)
+            alertController.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+            present(alertController, animated: true, completion: nil)
+            return
+        }
+        
         DispatchQueue.global(qos: .background).async {
             let contents = Configuration.generateContentsFromGrid(grid)
             let possibleNewConfiguration = Configuration(gridName, withContents: contents)

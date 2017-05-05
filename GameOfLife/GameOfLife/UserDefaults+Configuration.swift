@@ -16,6 +16,7 @@ extension UserDefaults {
                 UserDefaults.saveConfigurationTo(defaults, configuration: newConfiguration, fromViewController: fromViewController)
                 return
         }
+        
         let existingNames = Array(currentConfigurations.keys)
         
         let filteredNames = existingNames.filter {
