@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Photos
 
 class SimulationViewController: UIViewController, StoryboardIdentifiable {
 
@@ -79,7 +80,18 @@ class SimulationViewController: UIViewController, StoryboardIdentifiable {
         }
         VideoExportController.makeVideoFromGrid(grid, withDesiredLength: 10, andRefreshRate: StandardEngine.engine.refreshRate) {
             documentController in
-            documentController?.presentOpenInMenu(from: self.view.frame, in: self.view, animated: true)
+            
+            let photos = PHPhotoLibrary.authorizationStatus()
+            if photos == .notDetermined {
+                PHPhotoLibrary.requestAuthorization({status in
+                    if status == .authorized {
+                        documentController?.presentOpenInMenu(from: self.view.bounds, in: self.view, animated: true)
+                    } else {
+                    }
+                })
+            } else if photos == .authorized {
+                documentController?.presentOptionsMenu(from: self.view.frame, in: self.view, animated: true)
+            }
         }
     }
 }

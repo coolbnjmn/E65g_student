@@ -11,15 +11,13 @@ import AVFoundation
 
 extension UIView {
     func capture() -> UIImage? {
+        UIGraphicsBeginImageContextWithOptions(self.frame.size, self.isOpaque, UIScreen.main.scale)
         guard let context = UIGraphicsGetCurrentContext() else {
             return nil
         }
-        
-        UIGraphicsBeginImageContextWithOptions(self.frame.size, self.isOpaque, UIScreen.main.scale)
         self.layer.render(in: context)
         let image = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
-        
         return image
     }
 }
@@ -35,7 +33,8 @@ class VideoExportController: NSObject {
         // videoLength == s
         // if FPS == refreshRate, hz == FPS
         // frameCount = FPS * length = refreshRate * videoLength
-        for _ in 0..<(Int(hzRate * videoLength)) {
+        let rate = hzRate == 0 ? 1 : hzRate
+        for _ in 0..<(Int(rate * videoLength)) {
             gridView.setNeedsDisplay()
             gridView.layoutSubviews()
             if let image = gridView.capture() {
@@ -44,7 +43,7 @@ class VideoExportController: NSObject {
             gridView.grid = gridView.grid.next()
         }
         
-        VideoExportController.buildVideoFromFrames(outputFrames, outputSize: CGSize(width: Constants.Defaults.defaultVideoOutputSize, height: Constants.Defaults.defaultVideoOutputSize), {
+        VideoExportController.buildVideoFromFrames(outputFrames, outputSize: CGSize(width: Constants.Defaults.defaultVideoOutputSize, height: Constants.Defaults.defaultVideoOutputSize), fps: Int(rate), {
             success, filePath in
             if let fileURL = filePath, success {
                 completion(UIDocumentInteractionController(url: fileURL))
@@ -58,7 +57,7 @@ class VideoExportController: NSObject {
      Function heavily derived from:
      http://stackoverflow.com/questions/28968322/how-would-i-put-together-a-video-using-the-avassetwriter-in-swift
      */
-    static func buildVideoFromFrames(_ frames: [UIImage], outputSize: CGSize, _ completion: @escaping ((_ success: Bool, _ filePath: URL?) -> Void)) {
+    static func buildVideoFromFrames(_ frames: [UIImage], outputSize: CGSize, fps: Int, _ completion: @escaping ((_ success: Bool, _ filePath: URL?) -> Void)) {
         let fileManager = FileManager.default
         let urls = fileManager.urls(for: .documentDirectory, in: .userDomainMask)
         let outputSettings: [String: Any] = [AVVideoCodecKey : AVVideoCodecH264,
@@ -100,8 +99,7 @@ class VideoExportController: NSObject {
             let media_queue = DispatchQueue.global(qos: .background)
             
             videoWriterInput.requestMediaDataWhenReady(on: media_queue, using: { () -> Void in
-                let fps: Int32 = 1
-                let frameDuration = CMTimeMake(1, fps)
+                let frameDuration = CMTimeMake(1, Int32(fps))
                 
                 var frameCount: Int64 = 0
                 var appendSucceeded = true
@@ -109,7 +107,7 @@ class VideoExportController: NSObject {
                 while (!mutableFrames.isEmpty) {
                     if (videoWriterInput.isReadyForMoreMediaData) {
                         let nextPhoto = mutableFrames.remove(at: 0)
-                        let lastFrameTime = CMTimeMake(frameCount, fps)
+                        let lastFrameTime = CMTimeMake(frameCount, Int32(fps))
                         let presentationTime = frameCount == 0 ? lastFrameTime : CMTimeAdd(lastFrameTime, frameDuration)
                         
                         var pixelBuffer: CVPixelBuffer? = nil
