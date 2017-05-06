@@ -843,7 +843,7 @@
                                                 <color key="textColor" red="0.90980392160000001" green="0.8862745098" blue="0.53333333329999999" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="251" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Choose a grid name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="BcR-kB-lBg">
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="251" horizontalCompressionResistancePriority="249" verticalCompressionResistancePriority="1000" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Choose a grid name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="BcR-kB-lBg">
                                                 <rect key="frame" x="75.5" y="0.0" width="275.5" height="29"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <color key="tintColor" red="0.90980392160000001" green="0.8862745098" blue="0.53333333329999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -855,17 +855,38 @@
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="BcR-kB-lBg" secondAttribute="trailing" id="HXC-tT-jPD"/>
                                             <constraint firstItem="mqu-L1-kez" firstAttribute="leading" secondItem="oGu-7U-rqJ" secondAttribute="leading" id="IUG-3b-Cgp"/>
+                                            <constraint firstItem="BcR-kB-lBg" firstAttribute="leading" secondItem="oGu-7U-rqJ" secondAttribute="leading" id="JvH-R8-SOd"/>
                                             <constraint firstAttribute="bottom" secondItem="BcR-kB-lBg" secondAttribute="bottom" id="NIB-of-r9J"/>
                                             <constraint firstItem="BcR-kB-lBg" firstAttribute="top" secondItem="oGu-7U-rqJ" secondAttribute="top" id="Oaa-tw-oGx"/>
                                             <constraint firstItem="BcR-kB-lBg" firstAttribute="leading" secondItem="mqu-L1-kez" secondAttribute="trailing" constant="4" id="aBw-hV-O7c"/>
                                             <constraint firstItem="mqu-L1-kez" firstAttribute="top" secondItem="oGu-7U-rqJ" secondAttribute="top" id="mHw-xN-5Ln"/>
+                                            <constraint firstItem="BcR-kB-lBg" firstAttribute="top" secondItem="mqu-L1-kez" secondAttribute="bottom" constant="4" id="mYz-8i-rcM"/>
                                             <constraint firstAttribute="bottom" secondItem="mqu-L1-kez" secondAttribute="bottom" id="ncU-Ve-CMt"/>
+                                            <constraint firstAttribute="trailing" secondItem="mqu-L1-kez" secondAttribute="trailing" id="o2j-pW-S4n"/>
                                         </constraints>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="o2j-pW-S4n"/>
+                                                <exclude reference="JvH-R8-SOd"/>
+                                                <exclude reference="mYz-8i-rcM"/>
+                                            </mask>
+                                        </variation>
+                                        <variation key="heightClass=compact" axis="vertical">
+                                            <mask key="constraints">
+                                                <exclude reference="ncU-Ve-CMt"/>
+                                                <include reference="o2j-pW-S4n"/>
+                                                <include reference="JvH-R8-SOd"/>
+                                                <exclude reference="Oaa-tw-oGx"/>
+                                                <exclude reference="aBw-hV-O7c"/>
+                                                <include reference="mYz-8i-rcM"/>
+                                            </mask>
+                                        </variation>
                                     </stackView>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="hgq-Yv-zgc" firstAttribute="top" relation="greaterThanOrEqual" secondItem="oK9-S0-bqE" secondAttribute="top" id="2mr-l3-cc5"/>
+                                    <constraint firstItem="oGu-7U-rqJ" firstAttribute="centerY" secondItem="oK9-S0-bqE" secondAttribute="centerY" id="3N1-3a-8Xc"/>
                                     <constraint firstItem="oGu-7U-rqJ" firstAttribute="leading" secondItem="oK9-S0-bqE" secondAttribute="leading" constant="12" id="4AB-ud-Pcc"/>
                                     <constraint firstItem="O3p-JN-pD1" firstAttribute="centerY" secondItem="oK9-S0-bqE" secondAttribute="centerY" id="FiA-8A-S7l"/>
                                     <constraint firstItem="9Fm-fw-ida" firstAttribute="trailing" secondItem="hgq-Yv-zgc" secondAttribute="trailing" constant="-24" id="Gi9-Me-trJ"/>
@@ -875,6 +896,7 @@
                                     <constraint firstAttribute="trailing" secondItem="hgq-Yv-zgc" secondAttribute="trailing" priority="750" id="PhJ-TZ-0sd"/>
                                     <constraint firstItem="hgq-Yv-zgc" firstAttribute="centerY" secondItem="oK9-S0-bqE" secondAttribute="centerY" id="Qqg-5l-nQ7"/>
                                     <constraint firstItem="9Fm-fw-ida" firstAttribute="top" secondItem="hgq-Yv-zgc" secondAttribute="bottom" constant="12" id="clR-6h-uJY"/>
+                                    <constraint firstItem="hgq-Yv-zgc" firstAttribute="leading" secondItem="oGu-7U-rqJ" secondAttribute="trailing" constant="12" id="iGM-0T-DkK"/>
                                     <constraint firstItem="hgq-Yv-zgc" firstAttribute="centerX" secondItem="oK9-S0-bqE" secondAttribute="centerX" id="jhJ-XC-T2c"/>
                                     <constraint firstItem="9Fm-fw-ida" firstAttribute="bottom" secondItem="hgq-Yv-zgc" secondAttribute="bottom" id="l6e-PA-Zoz"/>
                                     <constraint firstAttribute="trailing" secondItem="oGu-7U-rqJ" secondAttribute="trailing" constant="12" id="trY-TB-TPt"/>
@@ -883,12 +905,18 @@
                                 </constraints>
                                 <variation key="default">
                                     <mask key="constraints">
+                                        <exclude reference="3N1-3a-8Xc"/>
+                                        <exclude reference="iGM-0T-DkK"/>
                                         <exclude reference="J5h-fi-Za8"/>
                                         <exclude reference="l6e-PA-Zoz"/>
                                     </mask>
                                 </variation>
                                 <variation key="heightClass=compact">
                                     <mask key="constraints">
+                                        <include reference="3N1-3a-8Xc"/>
+                                        <exclude reference="trY-TB-TPt"/>
+                                        <include reference="iGM-0T-DkK"/>
+                                        <exclude reference="vlQ-w9-yvB"/>
                                         <exclude reference="Gi9-Me-trJ"/>
                                         <include reference="J5h-fi-Za8"/>
                                         <exclude reference="KeQ-5r-OCm"/>
@@ -934,10 +962,10 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="configurationCell" id="lVy-TV-c4f">
-                                        <rect key="frame" x="0.0" y="28" width="343" height="44"/>
+                                        <rect key="frame" x="0.0" y="28" width="305.5" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="lVy-TV-c4f" id="vrN-Z4-06k">
-                                            <rect key="frame" x="0.0" y="0.0" width="343" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="305.5" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </tableViewCellContentView>
