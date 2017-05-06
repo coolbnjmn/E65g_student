@@ -23,11 +23,10 @@ extension UIView {
 }
 
 class VideoExportController: NSObject {
-    static func makeVideoFromGrid(_ grid: Grid, withDesiredLength videoLength: Double = 10, andRefreshRate hzRate: Double = 1, _ completion: @escaping ((UIDocumentInteractionController?) -> Void)) {
+    static func makeVideoFromGrid(_ inputGrid: Grid, withDesiredLength videoLength: Double = 10, andRefreshRate hzRate: Double = 1, _ completion: @escaping ((UIActivityViewController?) -> Void)) {
         let gridView: GridView = GridView(frame: CGRect(x: 0, y: 0, width: Constants.Defaults.defaultVideoOutputSize, height: Constants.Defaults.defaultVideoOutputSize))
         gridView.origin = .videoGeneration
-        GridEditorEngine.videoEngine.grid = grid
-        
+        GridEditorEngine.videoEngine.grid = inputGrid
         var outputFrames = [UIImage]()
         // refreshRate == hz = (1/s)
         // videoLength == s
@@ -40,13 +39,14 @@ class VideoExportController: NSObject {
             if let image = gridView.capture() {
                 outputFrames.append(image)
             }
-            gridView.grid = gridView.grid.next()
+            GridEditorEngine.videoEngine.grid = gridView.grid.next()
+            gridView.invalidateIntrinsicContentSize()
         }
         
         VideoExportController.buildVideoFromFrames(outputFrames, outputSize: CGSize(width: Constants.Defaults.defaultVideoOutputSize, height: Constants.Defaults.defaultVideoOutputSize), fps: Int(rate), {
             success, filePath in
             if let fileURL = filePath, success {
-                completion(UIDocumentInteractionController(url: fileURL))
+                completion(UIActivityViewController(activityItems: [fileURL], applicationActivities: nil))
             } else {
                 completion(nil)
             }
@@ -68,13 +68,12 @@ class VideoExportController: NSObject {
             fatalError("documentDir Error")
         }
         
-        let videoOutputURL = documentDirectory.appendingPathComponent("gridVideo.mp4")
-        if FileManager.default.fileExists(atPath: videoOutputURL.path) {
-            do {
-                try FileManager.default.removeItem(atPath: videoOutputURL.path)
-            } catch {
-                fatalError("Unable to delete file.")
-            }
+        var fileID: Int = 0
+        let gridVideoSubfolder = documentDirectory.appendingPathComponent("gameOfLifeVideos", isDirectory: true)
+        var videoOutputURL = gridVideoSubfolder.appendingPathComponent("gridVideo-\(fileID).mp4")
+        while FileManager.default.fileExists(atPath: videoOutputURL.path) {
+            fileID += 1
+            videoOutputURL = gridVideoSubfolder.appendingPathComponent("gridVideo-\(fileID).mp4")
         }
         
         guard let videoWriter = try? AVAssetWriter(outputURL: videoOutputURL, fileType: AVFileTypeMPEG4),

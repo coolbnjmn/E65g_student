@@ -262,6 +262,7 @@
 				TargetAttributes = {
 					B211829A1EB78FB100282781 = {
 						CreatedOnToolsVersion = 8.3.2;
+						DevelopmentTeam = M6Y34M2A35;
 						LastSwiftMigration = 0830;
 						ProvisioningStyle = Automatic;
 					};
@@ -499,7 +500,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = M6Y34M2A35;
 				INFOPLIST_FILE = GameOfLife/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -515,7 +516,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = M6Y34M2A35;
 				INFOPLIST_FILE = GameOfLife/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

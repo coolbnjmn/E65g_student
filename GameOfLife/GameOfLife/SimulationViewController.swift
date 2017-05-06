@@ -79,18 +79,18 @@ class SimulationViewController: UIViewController, StoryboardIdentifiable {
             return
         }
         VideoExportController.makeVideoFromGrid(grid, withDesiredLength: 10, andRefreshRate: StandardEngine.engine.refreshRate) {
-            documentController in
+            activityController in
             
             let photos = PHPhotoLibrary.authorizationStatus()
             if photos == .notDetermined {
-                PHPhotoLibrary.requestAuthorization({status in
-                    if status == .authorized {
-                        documentController?.presentOpenInMenu(from: self.view.bounds, in: self.view, animated: true)
+                PHPhotoLibrary.requestAuthorization({ status in
+                    if let activityController = activityController, status == .authorized {
+                        self.present(activityController, animated: true, completion: nil)
                     } else {
                     }
                 })
-            } else if photos == .authorized {
-                documentController?.presentOptionsMenu(from: self.view.frame, in: self.view, animated: true)
+            } else if let activityController = activityController, photos == .authorized {
+                self.present(activityController, animated: true, completion: nil)
             }
         }
     }

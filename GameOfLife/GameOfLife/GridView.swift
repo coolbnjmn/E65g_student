@@ -74,7 +74,12 @@ class GridView: UIView {
 
         }
         set {
-            StandardEngine.engine.delegate?.engineDidUpdate(withGrid: self.grid, forceUpdate: false)
+            switch origin {
+            case .simulation, .instrumentation:
+                StandardEngine.engine.delegate?.engineDidUpdate(withGrid: self.grid, forceUpdate: false)
+            case .videoGeneration:
+                GridEditorEngine.videoEngine.delegate?.engineDidUpdate(withGrid: self.grid, forceUpdate: false)
+            }
             self.setNeedsDisplay()
         }
     }
