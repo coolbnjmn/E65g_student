@@ -123,5 +123,23 @@ class InstrumentationViewController: UIViewController, StoryboardIdentifiable {
         navigationController?.pushViewController(gridEditorViewController, animated: true)
     }
     
+    @IBAction func resetAllConfigurationsPressed(_ sender: Any) {
+        let alertController = UIAlertController(title: Constants.Strings.areYouSureString, message: Constants.Strings.resetConfigurationsMessageString, preferredStyle: .alert)
+        
+        let confirmAction = UIAlertAction(title: Constants.Strings.yesString, style: .default, handler: {
+            action in
+            // reset all configurations
+            if let configurationTableViewController = self.childViewControllers.first as? ConfigurationsTableViewController {
+                configurationTableViewController.configurationsDataSource.resetToDefaultNetworkData()
+            }
+        })
+        
+        let cancelAction = UIAlertAction(title: Constants.Strings.cancelString, style: .cancel, handler: nil)
+        
+        alertController.addAction(confirmAction)
+        alertController.addAction(cancelAction)
+        present(alertController, animated: true, completion: nil)
+    }
+    
 }
 

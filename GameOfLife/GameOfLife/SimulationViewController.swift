@@ -27,6 +27,7 @@ class SimulationViewController: UIViewController, StoryboardIdentifiable {
         super.viewDidAppear(animated)
         gridView.delegate = self
         stepButton.isEnabled = (StandardEngine.engine.refreshRate == 0)
+        saveButton.isEnabled = (StandardEngine.engine.refreshRate == 0)
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
@@ -68,6 +69,7 @@ class SimulationViewController: UIViewController, StoryboardIdentifiable {
     
     @IBAction func resetButtonPressed(_ sender: Any) {
         StandardEngine.engine.clearCurrentGrid()
+        UserDefaults.removeSimulationTabConfiguration()
     }
 }
 

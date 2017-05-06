@@ -18,7 +18,7 @@ class ConfigurationsSaveAlertController {
         })
         alertController.addAction(confirmAction)
         
-        let cancelAction = UIAlertAction(title: Constants.Strings.configurationExistsReplaceCancelButtonTitle, style: .cancel, handler: nil)
+        let cancelAction = UIAlertAction(title: Constants.Strings.cancelString, style: .cancel, handler: nil)
         alertController.addAction(cancelAction)
         
         DispatchQueue.main.async {
@@ -28,13 +28,13 @@ class ConfigurationsSaveAlertController {
     
     static func displayContentsExistsOverrideAlert(presentingViewController: UIViewController, completion: @escaping ()->Void) {
         let alertController = UIAlertController(title: Constants.Strings.configurationExistsDuplicateAlertTitle, message: Constants.Strings.displayContentsExistsOverrideAlertMessage, preferredStyle: .alert)
-        let confirmAction = UIAlertAction(title: Constants.Strings.configurationExistsDuplicateConfirmButtonTitle, style: .default, handler: {
+        let confirmAction = UIAlertAction(title: Constants.Strings.yesString, style: .default, handler: {
             action in
             completion()
         })
         alertController.addAction(confirmAction)
         
-        let cancelAction = UIAlertAction(title: Constants.Strings.configurationExistsReplaceCancelButtonTitle, style: .cancel, handler: nil)
+        let cancelAction = UIAlertAction(title: Constants.Strings.cancelString, style: .cancel, handler: nil)
         alertController.addAction(cancelAction)
         
         DispatchQueue.main.async {

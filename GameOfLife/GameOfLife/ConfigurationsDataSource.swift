@@ -15,7 +15,22 @@ class ConfigurationsDataSource: NSObject {
     init(_ dataSourceUrlString: String = Constants.Defaults.defaultDataURL, tableView: UITableView, viewController: UIViewController) {
         super.init()
         self.tableView = tableView
-        NetworkManager.shared.fetchDataFromURL(dataSourceUrlString) {
+        fetchFromNetwork(dataSourceUrlString)
+        getAllAndReloadTable()
+        NotificationCenter.default.addObserver(self, selector: #selector(ConfigurationsDataSource.configurationsDidUpdate), name: Constants.Notifications.configurationsChangeNotification, object: nil)
+    }
+
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
+    
+    func resetToDefaultNetworkData() {
+        UserDefaults.removeAllConfigurations()
+        fetchFromNetwork(Constants.Defaults.defaultDataURL)
+    }
+    
+    func fetchFromNetwork(_ urlString: String) {
+        NetworkManager.shared.fetchDataFromURL(urlString) {
             success, json in
             if success {
                 Configuration.decodeJsonIntoConfigurations(json) {
@@ -27,12 +42,6 @@ class ConfigurationsDataSource: NSObject {
                 self.configurations = nil
             }
         }
-        getAllAndReloadTable()
-        NotificationCenter.default.addObserver(self, selector: #selector(ConfigurationsDataSource.configurationsDidUpdate), name: Constants.Notifications.configurationsChangeNotification, object: nil)
-    }
-
-    deinit {
-        NotificationCenter.default.removeObserver(self)
     }
 
     fileprivate func getAllAndReloadTable() {

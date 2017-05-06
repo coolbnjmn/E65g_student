@@ -160,6 +160,11 @@ extension UserDefaults {
         }
     }
     
+    static func removeAllConfigurations(_ defaults: UserDefaults = UserDefaults.standard) {
+        // Note: this maintains the simulation tab configuration, which is purely used to load that tab at launch
+        defaults.removeObject(forKey: Constants.Defaults.defaultConfigurationsUserDefaultsKey)
+    }
+    
     static func getSimulationTabConfiguration(_ defaults: UserDefaults = UserDefaults.standard, _ completion: ((Configuration?) -> Void)) {
         if let configurationDictionary = defaults.value(forKey: Constants.Defaults.defaultSimulationTabConfigurationUserDefaultKey) as? [String: AnyObject],
             let title = configurationDictionary["title"] as? String,
@@ -168,5 +173,9 @@ extension UserDefaults {
         } else {
             completion(nil)
         }
+    }
+    
+    static func removeSimulationTabConfiguration(_ defaults: UserDefaults = UserDefaults.standard) {
+        defaults.removeObject(forKey: Constants.Defaults.defaultSimulationTabConfigurationUserDefaultKey)
     }
 }

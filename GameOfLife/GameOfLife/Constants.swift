@@ -25,8 +25,10 @@ public struct Constants {
         static let configurationExistsAlertMessage: String = "Configuration exists with same name"
         static let displayContentsExistsOverrideAlertMessage: String = "Configuration exists with same contents"
         static let configurationExistsReplaceConfirmButtonTitle: String = "Replace"
-        static let configurationExistsReplaceCancelButtonTitle: String = "Cancel"
-        static let configurationExistsDuplicateConfirmButtonTitle: String = "Yes"
+        static let cancelString: String = "Cancel"
+        static let yesString: String = "Yes"
+        static let areYouSureString: String = "Are you sure?"
+        static let resetConfigurationsMessageString: String = "This will remove all non-network fetched configurations and edits"
     }
     
     public struct Defaults {
