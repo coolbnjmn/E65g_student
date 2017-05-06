@@ -58,25 +58,27 @@ class VideoExportController: NSObject {
      http://stackoverflow.com/questions/28968322/how-would-i-put-together-a-video-using-the-avassetwriter-in-swift
      */
     static func buildVideoFromFrames(_ frames: [UIImage], outputSize: CGSize, fps: Int, _ completion: @escaping ((_ success: Bool, _ filePath: URL?) -> Void)) {
-        let fileManager = FileManager.default
-        let urls = fileManager.urls(for: .documentDirectory, in: .userDomainMask)
+
         let outputSettings: [String: Any] = [AVVideoCodecKey : AVVideoCodecH264,
                                              AVVideoWidthKey : NSNumber(value: Float(outputSize.width)),
                                              AVVideoHeightKey : NSNumber(value: Float(outputSize.height))]
 
-        guard let documentDirectory: URL = urls.first else {
+        guard let url = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.gridVideos") else {
             fatalError("documentDir Error")
         }
+//        if let url = fileManager.containerURLForSecurityApplicationGroupIdentifier(appGroupIdentifier) {
+//            var cachesURL = url.URLByAppendingPathComponent("Library", isDirectory:  true)
+//            cachesURL = url.URLByAppendingPathComponent("Caches", isDirectory:  true)
+
+        var cacheURL = url.appendingPathComponent("Library", isDirectory: true)
+        cacheURL = cacheURL.appendingPathComponent("Caches", isDirectory: true)
         
-        var fileID: Int = 0
-        let gridVideoSubfolder = documentDirectory.appendingPathComponent("gameOfLifeVideos", isDirectory: true)
-        var videoOutputURL = gridVideoSubfolder.appendingPathComponent("gridVideo-\(fileID).mp4")
-        while FileManager.default.fileExists(atPath: videoOutputURL.path) {
-            fileID += 1
-            videoOutputURL = gridVideoSubfolder.appendingPathComponent("gridVideo-\(fileID).mp4")
+        let videoOutputURL = cacheURL.appendingPathComponent("gridVideo.mov")
+        if FileManager.default.fileExists(atPath: videoOutputURL.path) {
+            try? FileManager.default.removeItem(atPath: videoOutputURL.path)
         }
         
-        guard let videoWriter = try? AVAssetWriter(outputURL: videoOutputURL, fileType: AVFileTypeMPEG4),
+        guard let videoWriter = try? AVAssetWriter(outputURL: videoOutputURL, fileType: AVFileTypeQuickTimeMovie),
             videoWriter.canApply(outputSettings: outputSettings, forMediaType: AVMediaTypeVideo) else {
             fatalError("AVAssetWriter error")
         }

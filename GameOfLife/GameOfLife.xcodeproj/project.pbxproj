@@ -80,6 +80,7 @@
 		B21E02361EBA22BF00FC82DB /* UserDefaults+Configuration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UserDefaults+Configuration.swift"; sourceTree = "<group>"; };
 		B21E02381EBA3B8200FC82DB /* ConfigurationsSaveAlertController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigurationsSaveAlertController.swift; sourceTree = "<group>"; };
 		B266C80C1EBDE5DE0073FD31 /* VideoExportController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoExportController.swift; sourceTree = "<group>"; };
+		B28F3E951EBE7B2E003EF7B0 /* GameOfLife.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = GameOfLife.entitlements; sourceTree = "<group>"; };
 		B2AC28EC1EB8D3D000419A4A /* InstrumentationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = InstrumentationViewController.swift; path = GameOfLife/InstrumentationViewController.swift; sourceTree = SOURCE_ROOT; };
 		B2AC28ED1EB8D3D000419A4A /* SimulationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SimulationViewController.swift; path = GameOfLife/SimulationViewController.swift; sourceTree = SOURCE_ROOT; };
 		B2AC28EE1EB8D3D000419A4A /* StatisticsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StatisticsViewController.swift; path = GameOfLife/StatisticsViewController.swift; sourceTree = SOURCE_ROOT; };
@@ -137,6 +138,7 @@
 		B211829D1EB78FB100282781 /* GameOfLife */ = {
 			isa = PBXGroup;
 			children = (
+				B28F3E951EBE7B2E003EF7B0 /* GameOfLife.entitlements */,
 				B21182DB1EB791B200282781 /* ViewController */,
 				B21182E21EB791B200282781 /* Grid.swift */,
 				3F51DBD91EB9D2B300E87C5E /* GridEditorEngine.swift */,
@@ -265,6 +267,11 @@
 						DevelopmentTeam = M6Y34M2A35;
 						LastSwiftMigration = 0830;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 					B21182AE1EB78FB200282781 = {
 						CreatedOnToolsVersion = 8.3.2;
@@ -500,6 +507,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = GameOfLife/GameOfLife.entitlements;
 				DEVELOPMENT_TEAM = M6Y34M2A35;
 				INFOPLIST_FILE = GameOfLife/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
@@ -516,6 +524,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = GameOfLife/GameOfLife.entitlements;
 				DEVELOPMENT_TEAM = M6Y34M2A35;
 				INFOPLIST_FILE = GameOfLife/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
