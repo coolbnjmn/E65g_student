@@ -67,12 +67,12 @@ extension Configuration {
         }
     }
     
-    static func encodeConfigurationToJSON(_ configuration: Configuration, _ completion: (([String: AnyObject]) -> Void)) {
+    static func encodeConfigurationToJSON(_ configuration: Configuration) -> [String: AnyObject] {
         var resultDictionary = [String: AnyObject]()
         
         resultDictionary["title"] = configuration.title as AnyObject
         resultDictionary["contents"] = configuration.contents as AnyObject
-        completion(resultDictionary)
+        return resultDictionary
     }
 }
 

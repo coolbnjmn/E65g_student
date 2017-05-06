@@ -16,7 +16,7 @@ class StandardEngine: EngineProtocol {
     
     private(set) var grid: GridProtocol {
         didSet {
-            self.delegate?.engineDidUpdate(withGrid: self.grid)
+            self.delegate?.engineDidUpdate(withGrid: self.grid, forceUpdate: false)
         }
     }
     
@@ -73,9 +73,21 @@ class StandardEngine: EngineProtocol {
         return grid
     }
     
+    func setupEngineFromConfiguration(_ configuration: Configuration) {
+        configuration.generateGridWithContents {
+            gridOptional in
+            guard let newGrid = gridOptional else {
+                return
+            }
+            self.grid = newGrid
+            self.rows = newGrid.size.rows
+            self.delegate?.engineDidUpdate(withGrid: newGrid, forceUpdate: true)
+        }
+    }
+    
     func gridCellStateChange(_ position: (Int, Int), _ newCellState: CellState) -> GridProtocol {
         grid[position] = newCellState
-        delegate?.engineDidUpdate(withGrid: grid)
+        delegate?.engineDidUpdate(withGrid: grid, forceUpdate: false)
         return grid
     }
     
@@ -86,7 +98,7 @@ class StandardEngine: EngineProtocol {
         
         self.grid = newGrid
         self.rows = newGrid.size.rows
-        delegate?.engineDidUpdate(withGrid: newGrid)
+        delegate?.engineDidUpdate(withGrid: newGrid, forceUpdate: true)
     }
     
     // Helpers

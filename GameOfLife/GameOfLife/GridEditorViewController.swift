@@ -120,7 +120,7 @@ extension GridEditorViewController: GridViewDelegate {
 }
 
 extension GridEditorViewController: EngineDelegate {
-    func engineDidUpdate(withGrid gridFromEngine: GridProtocol) {
+    func engineDidUpdate(withGrid gridFromEngine: GridProtocol, forceUpdate: Bool = false) {
         gridView.setNeedsDisplay()
         // grid editor doesn't send stats to Statistics view, only Simulation does.
         if loadingActivityIndicator.isAnimating {

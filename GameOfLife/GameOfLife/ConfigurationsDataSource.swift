@@ -20,10 +20,7 @@ class ConfigurationsDataSource: NSObject {
             if success {
                 Configuration.decodeJsonIntoConfigurations(json) {
                     configurationArray in
-                    configurationArray.forEach {
-                        configuration in
-                        UserDefaults.checkConfigurationIsSavableAndSave(UserDefaults.standard, configuration, fromViewController: viewController, skipChecks: true)
-                    }
+                    UserDefaults.saveConfigurationsFromNetwork(UserDefaults.standard, configurations: configurationArray)
                     self.getAllAndReloadTable()
                 }
             } else {

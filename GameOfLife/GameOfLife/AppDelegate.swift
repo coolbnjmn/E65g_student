@@ -16,19 +16,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        UserDefaults.getSimulationTabConfiguration {
-            configuration in
-            
-            configuration?.generateGridWithContents {
-                gridOptional in
-                guard let grid = gridOptional else {
-                    return
-                }
-                
-                NotificationCenter.default.post(Notification(name: Constants.Notifications.configurationsChangeNotification, object: nil, userInfo: ["grid": grid]))
-            }
-        }
-        
         return true
     }
 
@@ -48,6 +35,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationDidBecomeActive(_ application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+        guard let tabBarController = self.window?.rootViewController as? UITabBarController else {
+            return
+        }
+        tabBarController.selectedIndex = 1
+        UserDefaults.getSimulationTabConfiguration {
+            configuration in
+            
+            guard let configuration = configuration else {
+                return
+            }
+            StandardEngine.engine.setupEngineFromConfiguration(configuration)
+        }
     }
 
     func applicationWillTerminate(_ application: UIApplication) {

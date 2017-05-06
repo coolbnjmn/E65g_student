@@ -10,7 +10,7 @@ import UIKit
 
 extension UserDefaults {
     // Configuration extension
-    static func checkConfigurationIsSavableAndSave(_ defaults: UserDefaults, _ newConfiguration: Configuration, fromViewController: UIViewController, skipChecks: Bool = false) {
+    static func checkConfigurationIsSavableAndSave(_ defaults: UserDefaults, _ newConfiguration: Configuration, fromViewController: UIViewController) {
         guard let currentConfigurations: [String: [String: AnyObject]] = defaults.value(forKey: Constants.Defaults.defaultConfigurationsUserDefaultsKey) as? [String: [String: AnyObject]] else {
                 // no existing user defaults
                 UserDefaults.saveConfigurationTo(defaults, configuration: newConfiguration, fromViewController: fromViewController)
@@ -24,7 +24,7 @@ extension UserDefaults {
             return configurationTitle == newConfiguration.title
         }
         
-        if !skipChecks && filteredNames.count > 0 {
+        if filteredNames.count > 0 {
             // show alert that Configuration alraedy exists, need to pick a new name
             let replaceConfigurationHandler: ()->Void = {
                 UserDefaults.saveConfigurationTo(defaults, configuration: newConfiguration, fromViewController: fromViewController)
@@ -44,7 +44,7 @@ extension UserDefaults {
             return Configuration(title, withContents: contents) == newConfiguration
         }
         
-        if !skipChecks && filteredConfigurations.count > 0 {
+        if filteredConfigurations.count > 0 {
             // show alert that Configuration will override existing, different-name-but-same-content configuration
             let replaceConfigurationHandler: ()->Void = {
                 UserDefaults.saveConfigurationTo(defaults, configuration: newConfiguration, fromViewController: fromViewController)
@@ -56,6 +56,29 @@ extension UserDefaults {
         UserDefaults.saveConfigurationTo(defaults, configuration: newConfiguration, fromViewController: fromViewController)
     }
     
+    static func saveConfigurationsFromNetwork(_ defaults: UserDefaults, configurations: [Configuration]) {
+        var currentConfigurations: [String: [String: AnyObject]]
+        if let rawConfigurations = getRawConfigurationsFrom(defaults) {
+            currentConfigurations = rawConfigurations
+        } else {
+            currentConfigurations = [String: [String: AnyObject]]()
+        }
+        
+        let dictionaries: [[String: AnyObject]] = configurations.map {
+            configuration in
+            return Configuration.encodeConfigurationToJSON(configuration)
+        }
+        let _ = dictionaries.forEach {
+            dictionary in
+            guard let title: String = dictionary["title"] as? String else {
+                return
+            }
+            currentConfigurations[title] = dictionary
+            return
+        }
+        defaults.set(currentConfigurations, forKey: Constants.Defaults.defaultConfigurationsUserDefaultsKey)
+    }
+    
     fileprivate static func saveConfigurationTo(_ defaults: UserDefaults, configuration: Configuration, fromViewController: UIViewController) {
         var currentConfigurations: [String: [String: AnyObject]]
         if let rawConfigurations = getRawConfigurationsFrom(defaults) {
@@ -64,16 +87,15 @@ extension UserDefaults {
             currentConfigurations = [String: [String: AnyObject]]()
         }
 
-        Configuration.encodeConfigurationToJSON(configuration, {
-            (dictionary: [String: AnyObject]) in
-            guard let title: String = dictionary["title"] as? String else {
-                return
-            }
-            var newConfigurations = currentConfigurations
-            newConfigurations[title] = dictionary
-            defaults.set(newConfigurations, forKey: Constants.Defaults.defaultConfigurationsUserDefaultsKey)
-            defaults.set(dictionary, forKey: Constants.Defaults.defaultSimulationTabConfigurationUserDefaultKey)
-        })
+        let dictionary = Configuration.encodeConfigurationToJSON(configuration)
+        guard let title: String = dictionary["title"] as? String else {
+            return
+        }
+        var newConfigurations = currentConfigurations
+        newConfigurations[title] = dictionary
+        defaults.set(newConfigurations, forKey: Constants.Defaults.defaultConfigurationsUserDefaultsKey)
+        defaults.set(dictionary, forKey: Constants.Defaults.defaultSimulationTabConfigurationUserDefaultKey)
+
         configuration.generateGridWithContents {
             gridOptional in
             guard let grid = gridOptional else {

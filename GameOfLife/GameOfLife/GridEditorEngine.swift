@@ -21,13 +21,13 @@ class GridEditorEngine: EditorEngineProtocol {
 
     public var grid: GridProtocol {
         didSet {
-            self.delegate?.engineDidUpdate(withGrid: self.grid)
+            self.delegate?.engineDidUpdate(withGrid: self.grid, forceUpdate: false)
         }
     }
 
     func gridCellStateChange(_ position: (Int, Int), _ newCellState: CellState) -> GridProtocol {
         grid[position] = newCellState
-        delegate?.engineDidUpdate(withGrid: grid)
+        delegate?.engineDidUpdate(withGrid: grid, forceUpdate: false)
         return grid
     }
 

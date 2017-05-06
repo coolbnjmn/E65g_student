@@ -69,7 +69,7 @@ class GridView: UIView {
 
         }
         set {
-            StandardEngine.engine.delegate?.engineDidUpdate(withGrid: self.grid)
+            StandardEngine.engine.delegate?.engineDidUpdate(withGrid: self.grid, forceUpdate: false)
             self.setNeedsDisplay()
         }
     }

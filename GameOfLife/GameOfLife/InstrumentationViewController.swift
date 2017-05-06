@@ -31,9 +31,13 @@ class InstrumentationViewController: UIViewController, StoryboardIdentifiable {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        NotificationCenter.default.addObserver(self, selector: #selector(InstrumentationViewController.engineDidUpdate(_:)), name: Constants.Notifications.gridChangeNotification, object: nil)
         setupUI()
     }
 
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: animated)
@@ -56,6 +60,19 @@ class InstrumentationViewController: UIViewController, StoryboardIdentifiable {
     func updateGridSize() {
         StandardEngine.engine.rows = Int(sizeStepper.value)
         StandardEngine.engine.cols = Int(sizeStepper.value)
+    }
+    
+    func engineDidUpdate(_ notification: Notification) {
+        guard let grid = notification.userInfo?["grid"] as? Grid else {
+            return
+        }
+
+        if grid.size.rows != Int(sizeStepper.value) {
+            rowNumberLabel.text = "\(grid.size.rows)"
+            colNumberLabel.text = rowNumberLabel.text
+            sizeSlider.value = Float(grid.size.rows)
+            sizeStepper.value = Double(grid.size.rows)
+        }
     }
 
     // MARK :- IBActions
