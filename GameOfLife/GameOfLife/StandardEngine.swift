@@ -11,7 +11,7 @@ import Foundation
 class StandardEngine: EngineProtocol {
 
     public static let engine: StandardEngine = StandardEngine()
-
+    
     var delegate: EngineDelegate?
     
     private(set) var grid: GridProtocol {

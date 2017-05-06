@@ -14,6 +14,7 @@ protocol GridViewDelegate {
 enum GridViewOrigin {
     case instrumentation
     case simulation
+    case videoGeneration
 }
 
 class GridView: UIView {
@@ -32,6 +33,8 @@ class GridView: UIView {
             case .simulation:
                 return StandardEngine.engine.rows
             case .instrumentation:
+                return self.grid.size.rows
+            case .videoGeneration:
                 return self.grid.size.rows
             }
         }
@@ -65,6 +68,8 @@ class GridView: UIView {
                 return StandardEngine.engine.grid
             case .instrumentation:
                 return GridEditorEngine.engine.grid
+            case .videoGeneration:
+                return GridEditorEngine.videoEngine.grid
             }
 
         }
@@ -76,6 +81,10 @@ class GridView: UIView {
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
+    }
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
     }
     
     func colorForCellState(_ cellState: CellState) -> UIColor {

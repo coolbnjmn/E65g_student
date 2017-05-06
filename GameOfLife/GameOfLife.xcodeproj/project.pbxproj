@@ -26,6 +26,7 @@
 		B21183051EB791B200282781 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B21182EA1EB791B200282781 /* Main.storyboard */; };
 		B21E02371EBA22BF00FC82DB /* UserDefaults+Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = B21E02361EBA22BF00FC82DB /* UserDefaults+Configuration.swift */; };
 		B21E02391EBA3B8200FC82DB /* ConfigurationsSaveAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B21E02381EBA3B8200FC82DB /* ConfigurationsSaveAlertController.swift */; };
+		B266C80D1EBDE5DE0073FD31 /* VideoExportController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B266C80C1EBDE5DE0073FD31 /* VideoExportController.swift */; };
 		B2AC28EF1EB8D3D000419A4A /* InstrumentationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2AC28EC1EB8D3D000419A4A /* InstrumentationViewController.swift */; };
 		B2AC28F01EB8D3D000419A4A /* SimulationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2AC28ED1EB8D3D000419A4A /* SimulationViewController.swift */; };
 		B2AC28F11EB8D3D000419A4A /* StatisticsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2AC28EE1EB8D3D000419A4A /* StatisticsViewController.swift */; };
@@ -78,6 +79,7 @@
 		B21182EA1EB791B200282781 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		B21E02361EBA22BF00FC82DB /* UserDefaults+Configuration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UserDefaults+Configuration.swift"; sourceTree = "<group>"; };
 		B21E02381EBA3B8200FC82DB /* ConfigurationsSaveAlertController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigurationsSaveAlertController.swift; sourceTree = "<group>"; };
+		B266C80C1EBDE5DE0073FD31 /* VideoExportController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoExportController.swift; sourceTree = "<group>"; };
 		B2AC28EC1EB8D3D000419A4A /* InstrumentationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = InstrumentationViewController.swift; path = GameOfLife/InstrumentationViewController.swift; sourceTree = SOURCE_ROOT; };
 		B2AC28ED1EB8D3D000419A4A /* SimulationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SimulationViewController.swift; path = GameOfLife/SimulationViewController.swift; sourceTree = SOURCE_ROOT; };
 		B2AC28EE1EB8D3D000419A4A /* StatisticsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StatisticsViewController.swift; path = GameOfLife/StatisticsViewController.swift; sourceTree = SOURCE_ROOT; };
@@ -152,6 +154,7 @@
 				B21E02381EBA3B8200FC82DB /* ConfigurationsSaveAlertController.swift */,
 				B2DE98A71EB7A93E00885A76 /* Configuration.swift */,
 				B21E02361EBA22BF00FC82DB /* UserDefaults+Configuration.swift */,
+				B266C80C1EBDE5DE0073FD31 /* VideoExportController.swift */,
 				B21182EA1EB791B200282781 /* Main.storyboard */,
 				B21182A51EB78FB100282781 /* Assets.xcassets */,
 				B21182A71EB78FB100282781 /* LaunchScreen.storyboard */,
@@ -335,6 +338,7 @@
 				B21183021EB791B200282781 /* AppDelegate.swift in Sources */,
 				B2DE98A81EB7A93E00885A76 /* Configuration.swift in Sources */,
 				B2AC28F01EB8D3D000419A4A /* SimulationViewController.swift in Sources */,
+				B266C80D1EBDE5DE0073FD31 /* VideoExportController.swift in Sources */,
 				B2AC28EF1EB8D3D000419A4A /* InstrumentationViewController.swift in Sources */,
 				B21183031EB791B200282781 /* Constants.swift in Sources */,
 				B21182FD1EB791B200282781 /* Grid.swift in Sources */,

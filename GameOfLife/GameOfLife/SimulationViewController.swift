@@ -74,6 +74,13 @@ class SimulationViewController: UIViewController, StoryboardIdentifiable {
     }
     
     @IBAction func videoButtonPressed(_ sender: Any) {
+        guard let grid = gridView.grid as? Grid else {
+            return
+        }
+        VideoExportController.makeVideoFromGrid(grid, withDesiredLength: 10, andRefreshRate: StandardEngine.engine.refreshRate) {
+            documentController in
+            documentController?.presentOpenInMenu(from: self.view.frame, in: self.view, animated: true)
+        }
     }
 }
 

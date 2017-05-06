@@ -16,6 +16,7 @@ protocol EditorEngineProtocol {
 
 class GridEditorEngine: EditorEngineProtocol {
     public static let engine: GridEditorEngine = GridEditorEngine()
+    public static let videoEngine: GridEditorEngine = GridEditorEngine()
 
     var delegate: EngineDelegate?
 
