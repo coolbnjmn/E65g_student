@@ -82,10 +82,17 @@ extension Configuration {
         let gridIterator = grid.makeIterator()
         let aliveCells = gridIterator.alive
 
-        let contentsArray: [[Int]] = aliveCells.map {
+        var contentsArray: [[Int]] = aliveCells.map {
             position in
             return [position.row, position.col]
         }
+        
+        let bornCells = gridIterator.born
+        let toAppendArray: [[Int]] = bornCells.map {
+            position in
+            return [position.row, position.col]
+        }
+        contentsArray.append(contentsOf: toAppendArray)
         
         return contentsArray
     }
