@@ -13,11 +13,13 @@ public struct Constants {
     public struct Notifications {
         static let gridChangeNotification: Notification.Name = Notification.Name(Strings.gridChangeNotificationString)
         static let configurationsChangeNotification: Notification.Name = Notification.Name(Strings.configurationsChangeNotificationString)
+        static let gridResetNotification: Notification.Name = Notification.Name(Strings.gridResetNotificationString)
     }
 
     public struct Strings {
         static let gridChangeNotificationString: String = "Grid Changed Notification"
         static let configurationsChangeNotificationString: String = "Configurations Changed Notification"
+        static let gridResetNotificationString: String = "Grid Reset Notification"
         static let configurationExistsAlertTitle: String = "Replace existing?"
         static let configurationExistsAlertMessage: String = "Configuration exists with same name"
         static let displayContentsExistsOverrideAlertMessage: String = "Configuration exists with same contents"

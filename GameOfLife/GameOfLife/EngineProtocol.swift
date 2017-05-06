@@ -20,6 +20,7 @@ protocol EngineProtocol {
     init(rowCount: Int, colCount: Int)
     func step() -> GridProtocol
     func setupEngineFromConfiguration(_ configuration: Configuration)
+    func clearCurrentGrid()
 }
 
 extension EngineProtocol {

@@ -12,7 +12,11 @@ class SimulationViewController: UIViewController, StoryboardIdentifiable {
 
     @IBOutlet weak var gridView: GridView!
     @IBOutlet weak var stepButton: UIButton!
-
+    @IBOutlet weak var resetButton: UIButton!
+    @IBOutlet weak var saveButton: UIButton!
+    @IBOutlet weak var gridNameTextField: UITextField!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         StandardEngine.engine.delegate = self
@@ -31,6 +35,38 @@ class SimulationViewController: UIViewController, StoryboardIdentifiable {
     
     @IBAction func stepButtonPressed(_ sender: Any) {
         let _ = StandardEngine.engine.step()
+    }
+    
+    @IBAction func saveButtonPressed(_ sender: Any) {
+        // Ideally this isn't duplicated, but will leave for now. Could move to UserDefaults extension.
+        guard let grid = StandardEngine.engine.grid as? Grid,
+            let gridName = gridNameTextField.text else {
+                return
+        }
+        
+        if gridName.characters.count == 0 {
+            let alertController = UIAlertController(title: "Please name the grid", message: "Grid names need at least a char", preferredStyle: .alert)
+            alertController.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+            present(alertController, animated: true, completion: nil)
+            return
+        }
+        
+        if grid.makeIterator().alive.count == 0 {
+            let alertController = UIAlertController(title: "Please add live cells to the grid", message: "Saved grids need one alive cell", preferredStyle: .alert)
+            alertController.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+            present(alertController, animated: true, completion: nil)
+            return
+        }
+        
+        DispatchQueue.global(qos: .background).async {
+            let contents = Configuration.generateContentsFromGrid(grid)
+            let possibleNewConfiguration = Configuration(gridName, withContents: contents)
+            UserDefaults.checkConfigurationIsSavableAndSave(UserDefaults.standard, possibleNewConfiguration, fromViewController: self)
+        }
+    }
+    
+    @IBAction func resetButtonPressed(_ sender: Any) {
+        StandardEngine.engine.clearCurrentGrid()
     }
 }
 

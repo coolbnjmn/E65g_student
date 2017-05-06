@@ -16,7 +16,9 @@ class StandardEngine: EngineProtocol {
     
     private(set) var grid: GridProtocol {
         didSet {
-            self.delegate?.engineDidUpdate(withGrid: self.grid, forceUpdate: false)
+            if !isNonDefaultConfigurationSetup {
+                self.delegate?.engineDidUpdate(withGrid: self.grid, forceUpdate: false)
+            }
         }
     }
     
@@ -45,7 +47,9 @@ class StandardEngine: EngineProtocol {
         didSet {
             if rows != oldValue {
                 cols = rows
-                gridSizeChanged(oldValue)
+                if !isNonDefaultConfigurationSetup {
+                    gridSizeChanged(oldValue)
+                }
             }
         }
     }
@@ -56,6 +60,8 @@ class StandardEngine: EngineProtocol {
             }
         }
     }
+    
+    var isNonDefaultConfigurationSetup: Bool = false
     
     required init() {
         grid = Grid(self.rows, self.cols) { row, col in .empty }
@@ -79,10 +85,17 @@ class StandardEngine: EngineProtocol {
             guard let newGrid = gridOptional else {
                 return
             }
+            self.isNonDefaultConfigurationSetup = true
             self.grid = newGrid
             self.rows = newGrid.size.rows
             self.delegate?.engineDidUpdate(withGrid: newGrid, forceUpdate: true)
+            self.isNonDefaultConfigurationSetup = false
         }
+    }
+    
+    func clearCurrentGrid() {
+        grid = Grid(rows, cols) { row, col in .empty }
+        NotificationCenter.default.post(Notification(name: Constants.Notifications.gridResetNotification, object: nil, userInfo: ["grid": grid]))
     }
     
     func gridCellStateChange(_ position: (Int, Int), _ newCellState: CellState) -> GridProtocol {
@@ -96,9 +109,11 @@ class StandardEngine: EngineProtocol {
             return
         }
         
-        self.grid = newGrid
-        self.rows = newGrid.size.rows
+        isNonDefaultConfigurationSetup = true
+        rows = newGrid.size.rows
+        grid = newGrid
         delegate?.engineDidUpdate(withGrid: newGrid, forceUpdate: true)
+        isNonDefaultConfigurationSetup = false
     }
     
     // Helpers

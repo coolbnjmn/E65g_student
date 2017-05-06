@@ -50,8 +50,10 @@ class InstrumentationViewController: UIViewController, StoryboardIdentifiable {
 
     func setupUI() {
         
-        rowNumberLabel.text = "\(Int(sizeStepper.value))"
-        colNumberLabel.text = "\(Int(sizeStepper.value))"
+        rowNumberLabel.text = "\(StandardEngine.engine.rows)"
+        colNumberLabel.text = "\(StandardEngine.engine.cols)"
+        sizeStepper.value = Double(StandardEngine.engine.rows)
+        sizeSlider.value = Float(StandardEngine.engine.rows)
 
         // Shown in navigation controller's automatic "back" handling
         navigationItem.title = "Instrumentation"
