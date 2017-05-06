@@ -131,7 +131,6 @@
                                                 </state>
                                                 <connections>
                                                     <action selector="saveButtonPressed:" destination="A0Y-bq-k4t" eventType="touchUpInside" id="Hpd-cE-XZj"/>
-                                                    <action selector="stepButtonPressed:" destination="A0Y-bq-k4t" eventType="touchUpInside" id="nXD-73-7Yx"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ES1-TI-Dra">
@@ -145,7 +144,6 @@
                                                 </state>
                                                 <connections>
                                                     <action selector="resetButtonPressed:" destination="A0Y-bq-k4t" eventType="touchUpInside" id="yHZ-dc-ScU"/>
-                                                    <action selector="stepButtonPressed:" destination="A0Y-bq-k4t" eventType="touchUpInside" id="V6F-Vq-gmR"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PUA-d2-FjB">
@@ -936,10 +934,10 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="configurationCell" id="lVy-TV-c4f">
-                                        <rect key="frame" x="0.0" y="28" width="305.5" height="44"/>
+                                        <rect key="frame" x="0.0" y="28" width="343" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="lVy-TV-c4f" id="vrN-Z4-06k">
-                                            <rect key="frame" x="0.0" y="0.0" width="305.5" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="343" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </tableViewCellContentView>

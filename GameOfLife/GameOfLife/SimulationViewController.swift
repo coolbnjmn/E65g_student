@@ -20,6 +20,7 @@ class SimulationViewController: UIViewController, StoryboardIdentifiable {
     override func viewDidLoad() {
         super.viewDidLoad()
         StandardEngine.engine.delegate = self
+        gridNameTextField.delegate = self
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -67,6 +68,13 @@ class SimulationViewController: UIViewController, StoryboardIdentifiable {
     
     @IBAction func resetButtonPressed(_ sender: Any) {
         StandardEngine.engine.clearCurrentGrid()
+    }
+}
+
+extension SimulationViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
 }
 

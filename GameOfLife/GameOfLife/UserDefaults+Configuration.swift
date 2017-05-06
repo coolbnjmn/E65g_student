@@ -24,15 +24,6 @@ extension UserDefaults {
             return configurationTitle == newConfiguration.title
         }
         
-        if filteredNames.count > 0 {
-            // show alert that Configuration alraedy exists, need to pick a new name
-            let replaceConfigurationHandler: ()->Void = {
-                UserDefaults.saveConfigurationTo(defaults, configuration: newConfiguration, fromViewController: fromViewController)
-            }
-            ConfigurationsSaveAlertController.displayNameExistsAlert(presentingViewController: fromViewController, completion: replaceConfigurationHandler)
-            return
-        }
-        
         let existingConfigurations: [[String: AnyObject]] = Array(currentConfigurations.values)
         let filteredConfigurations = existingConfigurations.filter {
             (configuration: [String: AnyObject]) in
@@ -42,6 +33,31 @@ extension UserDefaults {
                     return false
             }
             return Configuration(title, withContents: contents) == newConfiguration
+        }
+        
+        if filteredNames.count > 0 && filteredConfigurations.count > 0 {
+            let exactMatches = filteredConfigurations.filter {
+                (configuration: [String: AnyObject]) in
+                if let title = configuration["title"] as? String {
+                    return filteredNames.contains(title)
+                }
+                return false
+            }
+            if exactMatches.count > 0 {
+                // If there is an exact match, don't ask to replace, silently save
+                // this allows for easy "simulation loading" for pre-existing configurations
+                UserDefaults.saveConfigurationTo(defaults, configuration: newConfiguration, fromViewController: fromViewController)
+                return
+            }
+        }
+        
+        if filteredNames.count > 0 {
+            // show alert that Configuration alraedy exists, need to pick a new name
+            let replaceConfigurationHandler: ()->Void = {
+                UserDefaults.saveConfigurationTo(defaults, configuration: newConfiguration, fromViewController: fromViewController)
+            }
+            ConfigurationsSaveAlertController.displayNameExistsAlert(presentingViewController: fromViewController, completion: replaceConfigurationHandler)
+            return
         }
         
         if filteredConfigurations.count > 0 {

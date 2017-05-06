@@ -26,7 +26,7 @@ class StatisticsViewController: UIViewController, StoryboardIdentifiable {
         super.viewDidLoad()
         
         NotificationCenter.default.addObserver(self, selector: #selector(StatisticsViewController.engineDidUpdate(_:)), name: Constants.Notifications.gridChangeNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(StatisticsViewController.engineDidUpdate(_:)), name: Constants.Notifications.gridResetNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(StatisticsViewController.engineDidReset(_:)), name: Constants.Notifications.gridResetNotification, object: nil)
         
         aliveLabel.text = "# Cells that are alive:"
         deadLabel.text = "# Cells that are dead:"
@@ -66,6 +66,20 @@ class StatisticsViewController: UIViewController, StoryboardIdentifiable {
         bornCountLabel.text = "\(newBornCount)"
         let newEmptyCount: Int = (Int(emptyCountLabel.text ?? "") ?? 0) + gridIterator.empty.count
         emptyCountLabel.text = "\(newEmptyCount)"
+        
+        view.setNeedsDisplay()
+    }
+    
+    func engineDidReset(_ notification: Notification) {
+        guard let grid = notification.userInfo?["grid"] as? Grid else {
+            return
+        }
+        
+        let gridIterator = grid.makeIterator()
+        aliveCountLabel.text = "\(gridIterator.alive.count)"
+        deadCountLabel.text = "\(gridIterator.dead.count)"
+        bornCountLabel.text = "\(gridIterator.born.count)"
+        emptyCountLabel.text = "\(gridIterator.empty.count)"
         
         view.setNeedsDisplay()
     }
