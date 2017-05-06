@@ -21,10 +21,12 @@ public struct Constants {
         static let configurationsChangeNotificationString: String = "Configurations Changed Notification"
         static let gridResetNotificationString: String = "Grid Reset Notification"
         static let configurationExistsAlertTitle: String = "Replace existing?"
+        static let configurationExistsDuplicateAlertTitle: String = "Add anyways?"
         static let configurationExistsAlertMessage: String = "Configuration exists with same name"
         static let displayContentsExistsOverrideAlertMessage: String = "Configuration exists with same contents"
         static let configurationExistsReplaceConfirmButtonTitle: String = "Replace"
         static let configurationExistsReplaceCancelButtonTitle: String = "Cancel"
+        static let configurationExistsDuplicateConfirmButtonTitle: String = "Yes"
     }
     
     public struct Defaults {

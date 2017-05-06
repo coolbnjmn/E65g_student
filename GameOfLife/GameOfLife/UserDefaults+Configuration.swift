@@ -61,7 +61,7 @@ extension UserDefaults {
         }
         
         if filteredConfigurations.count > 0 {
-            // show alert that Configuration will override existing, different-name-but-same-content configuration
+            // show alert that Configuration will duplicate existing, different-name-but-same-content configuration
             let replaceConfigurationHandler: ()->Void = {
                 UserDefaults.saveConfigurationTo(defaults, configuration: newConfiguration, fromViewController: fromViewController)
             }

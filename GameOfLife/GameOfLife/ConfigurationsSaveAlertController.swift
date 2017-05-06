@@ -27,8 +27,8 @@ class ConfigurationsSaveAlertController {
     }
     
     static func displayContentsExistsOverrideAlert(presentingViewController: UIViewController, completion: @escaping ()->Void) {
-        let alertController = UIAlertController(title: Constants.Strings.configurationExistsAlertTitle, message: Constants.Strings.displayContentsExistsOverrideAlertMessage, preferredStyle: .alert)
-        let confirmAction = UIAlertAction(title: Constants.Strings.configurationExistsReplaceConfirmButtonTitle, style: .destructive, handler: {
+        let alertController = UIAlertController(title: Constants.Strings.configurationExistsDuplicateAlertTitle, message: Constants.Strings.displayContentsExistsOverrideAlertMessage, preferredStyle: .alert)
+        let confirmAction = UIAlertAction(title: Constants.Strings.configurationExistsDuplicateConfirmButtonTitle, style: .default, handler: {
             action in
             completion()
         })
