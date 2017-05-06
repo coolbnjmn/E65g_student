@@ -14,6 +14,7 @@ class SimulationViewController: UIViewController, StoryboardIdentifiable {
     @IBOutlet weak var stepButton: UIButton!
     @IBOutlet weak var resetButton: UIButton!
     @IBOutlet weak var saveButton: UIButton!
+    @IBOutlet weak var videoButton: UIButton!
     @IBOutlet weak var gridNameTextField: UITextField!
     
     
@@ -70,6 +71,9 @@ class SimulationViewController: UIViewController, StoryboardIdentifiable {
     @IBAction func resetButtonPressed(_ sender: Any) {
         StandardEngine.engine.clearCurrentGrid()
         UserDefaults.removeSimulationTabConfiguration()
+    }
+    
+    @IBAction func videoButtonPressed(_ sender: Any) {
     }
 }
 
