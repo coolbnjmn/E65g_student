@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
-    <device id="retina4_7" orientation="portrait">
+    <device id="retina4_7" orientation="landscape">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -20,47 +20,47 @@
                         <viewControllerLayoutGuide type="bottom" id="xb3-aO-Qok"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="gliderIcon" translatesAutoresizingMaskIntoConstraints="NO" id="pI3-aZ-8XD">
-                                <rect key="frame" x="40" y="186" width="295" height="295"/>
+                                <rect key="frame" x="44" y="65" width="245" height="245"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="pI3-aZ-8XD" secondAttribute="height" multiplier="1:1" id="0OP-Lj-sWE"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Icons by Benjamin Hendricks" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="12" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5VN-6j-8R9">
-                                <rect key="frame" x="20.5" y="489" width="334" height="29"/>
+                                <rect key="frame" x="305" y="111.5" width="334" height="29"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="24"/>
                                 <color key="textColor" red="0.1764705882" green="0.78039215689999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="https://www.sketchapp.com/" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="12" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="p5F-8O-ej2">
-                                <rect key="frame" x="12" y="563" width="351" height="24"/>
+                                <rect key="frame" x="305" y="185.5" width="334" height="24"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="20"/>
                                 <color key="textColor" red="0.29809393381137927" green="0.54543700537251694" blue="0.65070664787798416" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Color pallete from Coolor" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="12" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cTW-hh-o2V">
-                                <rect key="frame" x="12" y="595" width="351" height="29"/>
+                                <rect key="frame" x="305" y="217.5" width="334" height="29"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="24"/>
                                 <color key="textColor" red="0.1764705882" green="0.78039215689999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="https://coolors.co/" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="12" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Pwm-Uf-nwo">
-                                <rect key="frame" x="28" y="632" width="319" height="24"/>
+                                <rect key="frame" x="305" y="254.5" width="334" height="24"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="20"/>
                                 <color key="textColor" red="0.29809393379999999" green="0.54543700539999995" blue="0.65070664789999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Game Of Life" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="12" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="d7s-vm-88z">
-                                <rect key="frame" x="28" y="123.5" width="319" height="38.5"/>
+                                <rect key="frame" x="305" y="65" width="334" height="38.5"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="32"/>
                                 <color key="textColor" red="0.1764705882" green="0.78039215689999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Designed with SketchApp" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="12" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kZn-2B-HDn">
-                                <rect key="frame" x="12" y="526" width="351" height="29"/>
+                                <rect key="frame" x="305" y="148.5" width="334" height="29"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="24"/>
                                 <color key="textColor" red="0.1764705882" green="0.78039215689999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -86,6 +86,7 @@
                             <constraint firstItem="d7s-vm-88z" firstAttribute="leading" secondItem="Pwm-Uf-nwo" secondAttribute="leading" id="Mu0-AX-lQf"/>
                             <constraint firstItem="Pwm-Uf-nwo" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="NYn-hH-gFf"/>
                             <constraint firstItem="Pwm-Uf-nwo" firstAttribute="top" secondItem="cTW-hh-o2V" secondAttribute="bottom" constant="8" id="OMg-lQ-WB5"/>
+                            <constraint firstItem="pI3-aZ-8XD" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" constant="-70" id="PCr-Tv-6Vk"/>
                             <constraint firstItem="5VN-6j-8R9" firstAttribute="top" secondItem="d7s-vm-88z" secondAttribute="bottom" constant="8" id="QOp-aJ-RbA"/>
                             <constraint firstItem="xb3-aO-Qok" firstAttribute="top" relation="greaterThanOrEqual" secondItem="Pwm-Uf-nwo" secondAttribute="bottom" id="Qpw-mu-ZeS"/>
                             <constraint firstItem="pI3-aZ-8XD" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="S06-qZ-QTI"/>
@@ -113,6 +114,7 @@
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
+                                <exclude reference="S06-qZ-QTI"/>
                                 <exclude reference="CPi-gA-AXM"/>
                                 <exclude reference="Mu0-AX-lQf"/>
                                 <exclude reference="fQL-dc-nLh"/>
@@ -136,14 +138,16 @@
                         </variation>
                         <variation key="heightClass=compact">
                             <mask key="constraints">
+                                <exclude reference="PCr-Tv-6Vk"/>
+                                <include reference="S06-qZ-QTI"/>
+                                <exclude reference="jfy-pg-f7V"/>
+                                <exclude reference="qwD-Qo-nTF"/>
                                 <exclude reference="9tV-Kb-Bqu"/>
                                 <exclude reference="CPi-gA-AXM"/>
                                 <include reference="Mu0-AX-lQf"/>
                                 <include reference="fQL-dc-nLh"/>
                                 <exclude reference="seb-RY-HAg"/>
                                 <include reference="u9c-dz-S1n"/>
-                                <exclude reference="jfy-pg-f7V"/>
-                                <exclude reference="qwD-Qo-nTF"/>
                                 <include reference="3Pl-M1-fLz"/>
                                 <exclude reference="4yZ-9p-chz"/>
                                 <include reference="Jyl-i0-K9F"/>

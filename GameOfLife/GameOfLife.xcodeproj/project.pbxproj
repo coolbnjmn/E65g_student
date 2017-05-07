@@ -139,15 +139,15 @@
 			isa = PBXGroup;
 			children = (
 				B28F3E951EBE7B2E003EF7B0 /* GameOfLife.entitlements */,
+				B21182E71EB791B200282781 /* AppDelegate.swift */,
 				B21182DB1EB791B200282781 /* ViewController */,
 				B21182E21EB791B200282781 /* Grid.swift */,
+				B21182E51EB791B200282781 /* GridView.swift */,
+				B21182E61EB791B200282781 /* StandardEngine.swift */,
 				3F51DBD91EB9D2B300E87C5E /* GridEditorEngine.swift */,
 				B21182E31EB791B200282781 /* EngineDelegate.swift */,
 				B21182E41EB791B200282781 /* EngineProtocol.swift */,
 				3F51DBD71EB9C94D00E87C5E /* StoryboardIdentifiable.swift */,
-				B21182E51EB791B200282781 /* GridView.swift */,
-				B21182E61EB791B200282781 /* StandardEngine.swift */,
-				B21182E71EB791B200282781 /* AppDelegate.swift */,
 				B21182E81EB791B200282781 /* Constants.swift */,
 				B21182E91EB791B200282781 /* Helpers.swift */,
 				B2DE98A11EB7A54300885A76 /* NetworkFetcher.swift */,

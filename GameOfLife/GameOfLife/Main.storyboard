@@ -122,6 +122,7 @@
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uZ7-I1-15p">
                                                 <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
+                                                <color key="tintColor" red="0.90980392160000001" green="0.8862745098" blue="0.53333333329999999" alpha="1" colorSpace="calibratedRGB"/>
                                                 <state key="normal" image="videoIcon"/>
                                                 <connections>
                                                     <action selector="videoButtonPressed:" destination="A0Y-bq-k4t" eventType="touchUpInside" id="9KC-4X-V3i"/>
@@ -585,22 +586,22 @@
                                                                         <rect key="frame" x="0.0" y="83.5" width="335" height="30.5"/>
                                                                         <subviews>
                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="Timed refresh rate (Hz):" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W2m-gr-qfl">
-                                                                                <rect key="frame" x="0.0" y="0.0" width="203.5" height="30.5"/>
+                                                                                <rect key="frame" x="0.0" y="0.0" width="190.5" height="30.5"/>
                                                                                 <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="18"/>
                                                                                 <nil key="textColor"/>
                                                                                 <nil key="highlightedColor"/>
                                                                             </label>
                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="9.9" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H9H-br-QV3">
-                                                                                <rect key="frame" x="205.5" y="0.0" width="28.5" height="30.5"/>
+                                                                                <rect key="frame" x="192.5" y="0.0" width="27" height="30.5"/>
                                                                                 <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="18"/>
                                                                                 <nil key="textColor"/>
                                                                                 <nil key="highlightedColor"/>
                                                                             </label>
                                                                             <view contentMode="scaleToFill" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="HvA-fg-wcY">
-                                                                                <rect key="frame" x="236" y="0.0" width="99" height="30.5"/>
+                                                                                <rect key="frame" x="221.5" y="0.0" width="113.5" height="30.5"/>
                                                                                 <subviews>
                                                                                     <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" horizontalCompressionResistancePriority="100" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Pid-H5-HmE">
-                                                                                        <rect key="frame" x="50" y="-0.5" width="51" height="31"/>
+                                                                                        <rect key="frame" x="64.5" y="-0.5" width="51" height="31"/>
                                                                                         <color key="onTintColor" red="1" green="0.51372549020000002" blue="0.37647058820000001" alpha="1" colorSpace="calibratedRGB"/>
                                                                                         <color key="thumbTintColor" red="0.72549019609999998" green="0.94509803920000002" blue="0.54901960780000003" alpha="1" colorSpace="calibratedRGB"/>
                                                                                         <connections>
